@@ -3,21 +3,24 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Candidus-Informatio</title>
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
 
 	<!-- reset css src -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
 
 	<!-- materialize cdn -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
 
 	<!-- material+icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<!-- style css src -->
- 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
 
  	<!-- jquery cdn -->
- 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+ 	<!-- <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script> -->
 
  	<!-- ****** FireBase Src Link ****** -->
 	<!-- <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> -->
@@ -65,10 +68,40 @@
 	</div>
 </div>
 
+<!-- Modal Trigger from materialize example -->
+<a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal">
+<div class="modal-content">
+  <h4>Modal Header</h4>
+  <p>A bunch of text</p>
+</div>
+<div class="modal-footer">
+  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+</div>
+</div>
+
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+<script>
+
+  $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+
+</script>
+
 <!-- removed other divs for now -->
 
 <!-- added footer with red color -->
-<footer class="page-footer red darken-1">
+<footer class="page-footer red darken-3">
 	<div class="container">
 		<div class="footer-copyright">
 			Copyright &copy; 2016 Candidus-Informatio.com | All rights reserved.
