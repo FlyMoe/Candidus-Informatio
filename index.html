@@ -1,36 +1,96 @@
-<!DOCTYPE html>
+
+<!doctype html>
 <html>
 <head>
-	<title>Civic Data Part1</title>
+	<meta charset="UTF-8">
+	<title>Candidus-Informatio</title>
+
+	<!-- reset css src -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  	<link href='https://fonts.googleapis.com/css?family=Amatic+SC:700' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="assets/css/style.css">
-	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+	<!-- materialize cdn -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+	<!-- material+icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- bootstrap cdn -->
+	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+
+	<!-- style css src -->
+ 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+ 	<!-- jquery cdn -->
+ 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+ 	<!-- ****** FireBase Src Link ****** -->
+	<!-- <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> -->
+
+	<!-- javascript src -->
+ 	<script type="text/javascript" src="assets/javascript/app.js"></script>
+
+
 </head>
 <body>
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="input-group">
-		            <input type="text" class="form-control" placeholder="What's your address . . ." id="addressInput">
-		            <span class="input-group-btn">
-		              <button class="btn btn-default" type="button" id="submitAddress">Submit!</button>
-		            </span>
-          		</div>
-          	</div>
+
+	<nav class="gradient">
+		<div class="navbar-wrapper container">
+			<a href="#" class="brand-logo">Candidus-Informatio</a>
+
+			<ul class="right">
+				<li>
+					<form>
+						<div class="input-field">
+							<input id="search" type="search" required>
+							<label for="search"><i class="material-icons">search</i></label>
+							<i class="material-icons">close</i>
+						</div>
+					</form>
+				</li>
+			</ul>
+
+
+
+							
 		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<div id="userAddress"></div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				<div id="repInfo"></div>
-			</div>
-		</div>
+	</nav>
+
+<!-- </div> -->
+
+<!-- Page Layout here -->
+    <div class="row">
+
+    	<div class="col s8 m6 l2 card-panel hoverable">
+
+      		<img class="responsive-img" src="https://placehold.it/150x150" alt="bio-pic">
+
+    	</div>
+
+      	<div class="col s4 m6 l10 card-panel hoverable">
+
+	      	<ul>
+		      	<li><strong>Lorem:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p></li> 
+
+	      		<li>
+	      		<p><strong>ipsum:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p>
+	      		</li>
+
+	      		<li>
+				<p><strong>dolor:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p>
+	      		</li>
+
+	      	</ul>
+
+      	</div>
+    </div>  	
+	<div class="row">
+		<div class="col s6 m6 l6 card-panel hoverable">test3.</div>
+
+		<div class="col s6 m6 l6 card-panel hoverable">test4.</div>
 	</div>
-	<script src="assets/javascript/app.js"></script>	
+
+    
+	
+
 </body>
 </html>
