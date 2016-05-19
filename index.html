@@ -4,17 +4,14 @@
 	<meta charset="UTF-8">
 	<title>Candidus-Informatio</title>
 
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
 	<!-- materialize cdn -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
 	<!-- material+icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<!-- bootstrap cdn -->
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
-
-	<!-- reset css src -->
-	<!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
 
 	<!-- style css src -->
  	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
@@ -32,7 +29,7 @@
 </head>
 <body>
 
-<nav>
+<nav class="blue darken-2">
 	<div class="navbar-wrapper container">
 		<a href="#" class="brand-logo">Candidus-Informatio</a>
 
@@ -40,7 +37,7 @@
 			<li>
 				<form>
 					<div class="input-field">
-						<input id="search" type="search" required>
+						<input id="submitAddress" type="search" required>
 						<label for="search"><i class="material-icons">search</i></label>
 						<!-- <i class="material-icons">close</i> -->
 					</div>
@@ -55,7 +52,7 @@
 	<div class="col s12 m4 l3 card-panel hoverable">
 		<img class="responsive-img" src="https://placehold.it/150x150" alt="bio-pic">
     </div>
-	<div class="col s12 m8 l8 card-panel hoverable">
+	<div class="col s12 m8 l9 card-panel hoverable">
 		<ul>
 			<li><strong>Lorem:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p></li> 
 			<li><p><strong>ipsum:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p></li>
@@ -64,9 +61,11 @@
 		</ul>
 	</div>
 </div>
-	<div class="row">
-		<div class="col s6 m6 l6 card-panel hoverable">Social Links Box</div>
-		<div class="col s6 m6 l6 card-panel hoverable">Government Links Box</div>
+
+<footer class="page-footer red">
+	<div class="footer-copyright">
+		Copyright &copy; 2016 Candidus-Informatio.com | All rights reserved.
 	</div>
+</footer>
 </body>
 </html>
