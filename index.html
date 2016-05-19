@@ -35,53 +35,42 @@
 <!-- no gradient, added blue color with darken -->
 <nav class="blue darken-2">
 	<div class="navbar-wrapper container">
-		<a href="#" class="brand-logo">Candidus-Informatio</a>
-
-		<ul class="right">
-			<li>
-				<form>
-					<div class="input-field">
-						<input id="submitAddress" type="search" required>
-						<label for="search"><i class="material-icons">search</i></label>
-						<!-- <i class="material-icons">close</i> -->
-					</div>
-				</form>
-			</li>
-		</ul>					
+		<a href="#" class="brand-logo">Candidus-Informatio</a>					
 	</div>
 </nav>
 
-
 <div class="container">
+
 	<div class="row">
-		<div class="col s12 m4 l3 card-panel hoverable">
-			<img class="responsive-img" src="https://placehold.it/150x150" alt="bio-pic">
-	    </div>
-		<div class="col s12 m8 l9 card-panel hoverable">
-			<!-- cleaned up html formating -->
-			<ul>
-				<li><strong>Lorem:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p></li> 
-				<li><p><strong>ipsum:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p></li>
-				<li><p><strong>dolor:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget risus et elit ullamcorper accumsan. Vestibulum lacus nunc, maximus id.</p></li>
-			</ul>
-		</div>
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s6">
+					<input placeholder="address..." id="address-input" type="text" class="validate">
+					<label for="address-input"></label>
+					<!-- Modal Trigger from materialize example -->
+					<a class="waves-effect waves-light btn modal-trigger blue darken-2" href="#modal1">Search</a></div>
+				</div>
+			</div>
+		</form>
 	</div>
-</div>
 
-<div class="container">
-<!-- Modal Trigger from materialize example -->
-<a class="waves-effect waves-light btn modal-trigger blue darken-2" href="#modal1">Address Search</a>
-</div>
+
 
 <!-- Modal Structure -->
 <div id="modal1" class="modal">
-<div class="modal-content">
-  <h4>Modal Header</h4>
-  <p>A bunch of text</p>
-</div>
-<div class="modal-footer">
-  <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-</div>
+	<div class="modal-content">
+		<div class="row">
+			<div>
+				<img class="responsive-img" src="https://placehold.it/150x150" alt="bio-pic">
+			</div>
+			<div>
+				<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+	</div>
 </div>
 
 
