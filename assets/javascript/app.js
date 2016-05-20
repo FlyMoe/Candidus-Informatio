@@ -15,8 +15,9 @@ var tag = document.createElement('script');
                     autoplay: 1,
                     disablekb:0,
                     controls: 0,
-                    start: 20,
-                    loop: 0,
+                    loop: 1,
+                    start: 30,
+                    rel: 0,
                     controls: 0,
                     showinfo: 0,
                     autohide: 1,
@@ -25,8 +26,14 @@ var tag = document.createElement('script');
           videoId: 'JQqLd_mM1KI',
           events: {
             'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
+            'onStateChange': onPlayerStateChange,
+            onStateChange: function(e)
+            {
+        		if (e.data === YT.PlayerState.ENDED) {
+            	player.playVideo(); 
+        	}
+   		 }
+         }
         });
       }
 
