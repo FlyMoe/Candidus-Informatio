@@ -4,21 +4,23 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Candidus-Informatio</title>
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+
+	<!-- reset css src -->
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
 
 	<!-- reset css src -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
 	<!-- materialize cdn -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
 
 	<!-- material+icons -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-	<!-- bootstrap cdn -->
-	<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
-
 	<!-- style css src -->
- 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+ 	<!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css"> -->
 
  	<!-- jquery cdn -->
  	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
@@ -26,35 +28,92 @@
  	<!-- ****** FireBase Src Link ****** -->
 	<!-- <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> -->
 
-	<!-- javascript src -->
- 	<script type="text/javascript" src="assets/javascript/app.js"></script>
-
 
 </head>
 <body>
 
-	<nav class="mainHeader">
-		<div class="navbar-wrapper container">
-			<a href="#fourm" class="brand-logo"><h1>Candidus-Informatio</h1></a>					
-		</div>
-	</nav>
 
-<!-- </div> -->
+<nav class="blue darken-2">
+	<div class="navbar-wrapper container">
+		<a href="#" class="brand-logo">Candidus-Informatio</a>					
+	</div>
+</nav>
+
 <div class="container">
-	<div id="player"></div>
+
+	<div class="row">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s6">
+					<input placeholder="address..." id="addressInput" type="text" class="validate">
+					<label for="address-input"></label>
+					<!-- Modal Trigger from materialize example -->
+					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
+					<!-- Dropdown Trigger -->
+  					<a class='dropdown-button waves-effect waves-light btn blue darken-2' href='#' data-activates='dropdown1'>Favorites</a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<div id="repInfo"></div>
+		</div>
+	</div>
+
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal">
+		<div class="modal-content">
+			<h4>Candidate 1</h4>
+			<img class="responsive-img" src="https://placehold.it/100x100" alt="bio-pic">
+			<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
+			<div class="modal-footer">
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-red ">More Info</a>
+			</div>
+		</div>
+	</div>
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<h2>Confirm Address!</h4>
+			<p id="userAddress"></p>
+			<div class="modal-footer">
+			    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">ReEnter</a>
+      			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id="commenceQuery">Proceed</a>
+    		</div>
+		</div>
+	</div>
+
+	<!-- Dropdown Structure -->
+	<!-- cannot change text color with adding class. change fon in css page? -->
+	<ul id='dropdown1' class='dropdown-content'>
+		<li><a href="#!">one</a></li>
+		<li><a href="#!">two</a></li>
+		<!-- <li class="divider"></li> -->
+		<li><a href="#!">three</a></li>
+	</ul>
+
 </div>
 
-<!-- Page Layout here -->
-<div class = "content" id="fourm">
-    <div class = "container">
-        <div class = "row">
-            <div class = "col s12">
-            <a href="#fourm" class="btn-floating btn-large waves-effect waves-light blue" id="start"><i class="material-icons">toc</i></a><h2>Let's get started</h2>
-            </div>
-        </div>
-    </div>
-</div>
-	
 
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+	<!-- javascript src -->
+ <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+
+<!-- removed other divs for now -->
+
+<!-- added footer with red color -->
+<footer class="page-footer red darken-3">
+	<div class="container">
+		<div class="footer-copyright">
+			Copyright &copy; 2016 Candidus-Informatio.com | All rights reserved.
+		</div>
+	</div>
+</footer>
 </body>
 </html>
