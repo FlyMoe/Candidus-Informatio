@@ -48,30 +48,43 @@
 					<input placeholder="address..." id="address-input" type="text" class="validate">
 					<label for="address-input"></label>
 					<!-- Modal Trigger from materialize example -->
-					<a class="waves-effect waves-light btn modal-trigger blue darken-2" href="#modal1">Search</a></div>
+					<a class="waves-effect waves-light btn modal-trigger blue darken-2" href="#modal1">Search</a>
+					<!-- Dropdown Trigger -->
+  					<a class='dropdown-button waves-effect waves-light btn blue darken-2' href='#' data-activates='dropdown1'>Favorites</a>
 				</div>
 			</div>
 		</form>
 	</div>
 
-<!-- Modal Structure -->
-<div id="modal1" class="modal modal-fixed-footer">
-	<div class="modal-content">
-		<h4>Candidate 1</h4>
-		<img class="responsive-img" src="https://placehold.it/100x100" alt="bio-pic">
-		<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
-		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-red ">More Info</a>
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal modal-fixed-footer">
+		<div class="modal-content">
+			<h4>Candidate 1</h4>
+			<img class="responsive-img" src="https://placehold.it/100x100" alt="bio-pic">
+			<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-red ">More Info</a>
 
-		<h4>Candidate 2</h4>
-		<img class="responsive-img" src="https://placehold.it/100x100" alt="bio-pic">
-		<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
-		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-red ">More Info</a>
+			<h4>Candidate 2</h4>
+			<img class="responsive-img" src="https://placehold.it/100x100" alt="bio-pic">
+			<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-red ">More Info</a>
 
-		<h4>Candidate 3</h4>
-		<img class="responsive-img" src="https://placehold.it/100x100" alt="bio-pic">
-		<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
-		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-red ">More Info</a>
+			<h4>Candidate 3</h4>
+			<img class="responsive-img" src="https://placehold.it/100x100" alt="bio-pic">
+			<p><span>Bio:</span> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sed neque ligula. In at lectus sed quam aliquam consequat. Sed porttitor mi at turpis vehicula, eu pulvinar libero malesuada. Nulla.</p>
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-red ">More Info</a>
+		</div>
 	</div>
+
+	<!-- Dropdown Structure -->
+	<!-- cannot change text color with adding class. change fon in css page? -->
+	<ul id='dropdown1' class='dropdown-content'>
+		<li><a href="#!">one</a></li>
+		<li><a href="#!">two</a></li>
+		<!-- <li class="divider"></li> -->
+		<li><a href="#!">three</a></li>
+	</ul>
+
 </div>
 
 
