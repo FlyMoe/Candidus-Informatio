@@ -16,7 +16,7 @@ var tag = document.createElement('script');
                     disablekb:0,
                     controls: 0,
                     start: 20,
-                    loop: 1,
+                    loop: 0,
                     controls: 0,
                     showinfo: 0,
                     autohide: 1,

@@ -5,13 +5,15 @@
 }
 
 nav{
-	height:200px;
-	padding-top: 50px;
+	height:15vh;
+}
+h1
+{
+	margin:2vh;
 }
 
 .brand-logo
 {
-    color: yellow;
     text-shadow: -3px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
@@ -34,7 +36,17 @@ nav{
 }
 .content
 {
-	margin-top: 700px;
-	width: 100%;
-	background:blue;
+	text-align: center;
+	margin-top: 75vh;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-color: #3C3B6E;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+#start
+{
+	margin-top: 10px;
 }
