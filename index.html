@@ -21,30 +21,27 @@
     $('button').on('click', function() {
         var firstName = $('#inputFirstName').val().trim();
         var lastName = $('#inputLastName').val().trim();
-        // alert(firstName);
-        // richard api key
-        var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+        // Richard api key
+        ///var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
         // alex api key
-        // var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7"; 
+        var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7"; 
 
         var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-10d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
-// console.log(queryURL);
+
         $.ajax({
                 url: queryURL,
                 method: 'GET'
             })           
         .done(function(response) {
           
-                //console.log(response);
+                console.log(response);
             
         for (var i = 0; i < response.result.docs.length; i++) {
-           // alert("hello");
                 var url = response.result.docs[i].source.enriched.url.url;
                 // console.log(url);
-                var candidateDiv = $("#doc").append("<p><a href='"+url+"' target=\"_blank\">"+url+"</a></p>");              
-    
-
-                // $('#gifsAppearHere').prepend(candidateDiv);
+                var title = response.result.docs[i].source.enriched.url.title;
+                var hostname = $('<a>').prop('href', url).prop('hostname');
+                var candidateDiv = $("#doc").append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");  
         }
 
         });
