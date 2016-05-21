@@ -22,7 +22,11 @@
         var firstName = $('#inputFirstName').val().trim();
         var lastName = $('#inputLastName').val().trim();
         // alert(firstName);
+        // richard api key
         var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+        // alex api key
+        // var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7"; 
+
         var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-10d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 // console.log(queryURL);
         $.ajax({
