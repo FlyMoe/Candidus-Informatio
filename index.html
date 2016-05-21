@@ -1,0 +1,52 @@
+<html>
+
+<head>
+    <title>Animal Buttons</title>
+</head>
+
+<body>
+    <form>
+        <div>
+            <input type="text" id="inputFirstName" placeholder="Candidate's First Name">
+        </div>
+         <div>
+            <input type="text" id="inputLastName" placeholder="Candidate's Last Name">
+            <button>click</button>
+        </div>
+    </form>
+    <div id="doc"></div>
+  
+    <script src='http://code.jquery.com/jquery-2.1.3.min.js'></script>
+    <script type="text/javascript">
+    $('button').on('click', function() {
+        var firstName = $('#inputFirstName').val().trim();
+        var lastName = $('#inputLastName').val().trim();
+        // alert(firstName);
+        var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+        var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-10d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
+// console.log(queryURL);
+        $.ajax({
+                url: queryURL,
+                method: 'GET'
+            })           
+        .done(function(response) {
+          
+                //console.log(response);
+            
+        for (var i = 0; i < response.result.docs.length; i++) {
+           // alert("hello");
+                var url = response.result.docs[i].source.enriched.url.url;
+                // console.log(url);
+                var candidateDiv = $("#doc").append("<p><a href='"+url+"' target=\"_blank\">"+url+"</a></p>");              
+    
+
+                // $('#gifsAppearHere').prepend(candidateDiv);
+        }
+
+        });
+        return false;
+    });
+    </script>
+</body>
+
+</html>
