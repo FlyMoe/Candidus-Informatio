@@ -1,0 +1,136 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Candidus-Informatio</title>
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  	<!-- font awesome -->
+  	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<!-- materialize cdn -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
+
+	<!-- material+icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- style css src -->
+ 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+ 	<!-- jquery cdn -->
+ 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+ 	<!-- ****** FireBase Src Link ****** -->
+	<!-- <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> -->
+
+
+</head>
+<body>
+
+
+
+<div class="navbar-fixed">
+	<nav class="blue darken-2">
+		<div class="container">
+			<div class="nav-wrapper">
+				<a href="index.html" class="brand-logo">Candidus-Informatio</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contactus.html">Contact Us</a></li>
+					</ul>				
+			</div>
+		</div>
+	</nav>
+</div>
+
+
+<div class="parallax-container">
+	<div class="parallax"><img src="assets/images/capitol-building1.jpg"></div>
+</div>
+
+<div id="main-input" class="container">
+	<div class="row">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s6 transparent">
+					<input placeholder="address..." id="addressInput" type="text" class="validate">
+					<label for="address-input"></label>
+					<!-- Modal Trigger from materialize example -->
+					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="row">
+		<div class="col s12">
+			<div id="repInfo"></div>
+		</div>
+	</div>
+</div>
+	<!-- Modal Structure -->
+	<div id="modal1" class="modal modalLG">
+		<div class="modal-content">
+			<div class="container">
+				<div class="row">
+					<div class ="col l12">
+						<div id="wikiInfo"> </div>
+					</div>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div id="modal2" class="modal">
+		<div class="modal-content">
+			<h2>Confirm Address!</h4>
+			<p id="userAddress"></p>
+			<div class="modal-footer">
+			    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">ReEnter</a>
+      			<a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat" id="commenceQuery">Proceed</a>
+    		</div>
+		</div>
+	</div>
+
+
+<div class="parallax-container">
+	<div class="parallax"><img src="assets/images/capitol-building3.jpg"></div>
+</div><!-- div for parallax -->
+
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+<!-- javascript src -->
+ <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$('.parallax').parallax();
+	});
+</script>
+
+
+<!-- added footer with red color -->
+<footer class="page-footer red darken-2">
+	<div class="container">
+		<div class="footer-copyright">
+			Copyright &copy; 2016 Candidus-Informatio.com | All rights reserved.
+		</div>
+	</div>
+</footer>
+</body>
+</html>
