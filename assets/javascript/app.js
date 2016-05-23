@@ -2,6 +2,7 @@
 
 $(document).on('click','.modal-trigger',function(){
 	
+
 	if($(this).data("target") == "modal1")
 	{
 		var searchPage = $(this).data("repname");
@@ -19,7 +20,6 @@ $(document).on('click','.modal-trigger',function(){
     	//$("#wikiInfo").find("a").attr("target", "_blank"); 
   });
 	}
-
 
 	//if the #submitAddress modal is hit get address to be confirmed by user
 	if($(this).data("target") == "modal2")
@@ -41,6 +41,7 @@ $(document).on('click','.modal-trigger',function(){
 			$("#userAddress").append(addressResponse.line1+ "<br>" + addressResponse.city + " " + addressResponse.state + " " + addressResponse.zip);
 		});
 	}
+
 	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
 	$('.modal-trigger').leanModal();
 });
@@ -92,6 +93,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$(listItemRep).attr("class", "collection-item avatar modal-trigger");
 			//enables each item to load larger modal with detailed info
 			$(listItemRep).attr("href", "#modal1");
+
 			//target data
 			$(listItemRep).attr("data-target", "modal1");
 			//saves representatives name for wiki search
@@ -116,6 +118,6 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	//adds entire list to div
 	$("#repInfo").append(list);
 });
-
 });
+
 
