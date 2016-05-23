@@ -2,6 +2,25 @@
 
 $(document).on('click','.modal-trigger',function(){
 	
+	if($(this).data("target") == "modal1")
+	{
+		var searchPage = $(this).data("repname");
+		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
+			console.log(json);
+    	var printDiv = $('<div>').html(json.parse.text['*']); 
+    	$(printDiv).find('img').attr("src", function(){
+    			var src = $(this).attr("src");
+    			return ('https:' + src);
+    	});
+    	$(printDiv).find(".hatnote").remove();
+    	$(printDiv).find(".vertical-navbox").remove();
+    	$("#wikiInfo").html(printDiv);
+    	//$("#wikiInfo").find("a:not(.references a)").attr("href", function(){ return "http://www.wikipedia.org" + $(this).attr("href");}); 
+    	//$("#wikiInfo").find("a").attr("target", "_blank"); 
+  });
+	}
+
+
 	//if the #submitAddress modal is hit get address to be confirmed by user
 	if($(this).data("target") == "modal2")
 	{
@@ -73,6 +92,10 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$(listItemRep).attr("class", "collection-item avatar modal-trigger");
 			//enables each item to load larger modal with detailed info
 			$(listItemRep).attr("href", "#modal1");
+			//target data
+			$(listItemRep).attr("data-target", "modal1");
+			//saves representatives name for wiki search
+			$(listItemRep).attr("data-repname", official[office[i].officialIndices[j]].name );
 			//image and img properties for each representative
 			var img = $("<img>");
 			$(img).attr("src", official[office[i].officialIndices[j]].photoUrl);
