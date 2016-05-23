@@ -71,7 +71,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	var official = response.officials;
 
 	//Main header for list
-	$(listItemHeader).attr("class", "collection-header");
+	$(listItemHeader).attr("class", "collection-header listHeader");
 	$(listItemHeader).append("<h4>Representatives</h4>");
 	$(list).append(listItemHeader);
 	
@@ -81,7 +81,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 		//list item which will contain query response
 		var listItemOffice = $("<li>");
 		//for each itteration set class back to header
-		$(listItemOffice).attr("class", "collection-header");
+		$(listItemOffice).attr("class", "collection-header officeHeader");
 		//pushes headers for office names
 		$(listItemOffice).append('<h4>' + office[i].name + '</h4>');
 		$(list).append(listItemOffice);
@@ -93,7 +93,6 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$(listItemRep).attr("class", "collection-item avatar modal-trigger");
 			//enables each item to load larger modal with detailed info
 			$(listItemRep).attr("href", "#modal1");
-
 			//target data
 			$(listItemRep).attr("data-target", "modal1");
 			//saves representatives name for wiki search
@@ -104,7 +103,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$(img).css("max-height", "200px");
 			$(listItemRep).append(img);
 			//span and span properties for each representative's name
-			var span = $("<span>").attr("class", "title");
+			var span = $("<span>").attr("class", "title repHeader");
 			$(span).append('<br>' + official[office[i].officialIndices[j]].name);
 			$(listItemRep).append(span);
 			//p and p properties for each representative party, other info
