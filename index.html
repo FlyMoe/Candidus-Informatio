@@ -9,7 +9,7 @@
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
   	<!-- font awesome -->
-  	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+  	<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css" type="text/css">
 
 	<!-- reset css src -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -38,25 +38,28 @@
 </head>
 <body>
 
-
-
-<div class="navbar-fixed">
-	<nav class="blue darken-2">
-		<div class="container">
-			<div class="nav-wrapper">
-				<a href="index.html" class="brand-logo">Candidus-Informatio</a>
-					<ul id="nav-mobile" class="right hide-on-med-and-down">
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About</a></li>
-						<li><a href="contactus.html">Contact Us</a></li>
-					</ul>				
-			</div>
+<nav class="blue darken-2">
+	<div class="container">
+		<div class="nav-wrapper">
+			<a href="index.html" class="brand-logo">Candidus-Informatio</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="index.html">Home</a></li>
+					<li><a class="page-scroll" href="#main-input">Search</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contactus.html">Contact Us</a></li>
+				</ul>
+				<ul class="side-nav" id="mobile-demo">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="about.html">About</a></li>
+					<li><a href="contactus.html">Contact Us</a></li>
+				</ul>				
 		</div>
-	</nav>
-</div>
+	</div>
+</nav>
 
 
-<div class="parallax-container">
+<div id="parallax1" class="parallax-container">
 	<div class="parallax"><img src="assets/images/capitol-building1.jpg"></div>
 </div>
 
@@ -68,17 +71,31 @@
 					<input placeholder="address..." id="addressInput" type="text" class="validate">
 					<label for="address-input"></label>
 					<!-- Modal Trigger from materialize example -->
-					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
+					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2" href="#modal2">Search</a>
+					<hr>
+					<!-- Dropdown Trigger -->
+  					<a class='dropdown-button waves-effect waves-light btn blue darken-2' href='#' data-activates='dropdown1'>Trending</a>
 				</div>
 			</div>
 		</form>
 	</div>
 	<div class="row">
 		<div class="col s12">
-			<div id="repInfo"></div>
+			<div id="repInfo">
+			</div>
 		</div>
 	</div>
 </div>
+
+<!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a href="#!">Article 1</a></li>
+    <li><a href="#!">Article 2</a></li>
+    <li><a href="#!">Article 3</a></li>
+  </ul>
+
+
+
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal modalLG">
 		<div class="modal-content">
@@ -120,6 +137,7 @@
 <script>
 	$(document).ready(function(){
 		$('.parallax').parallax();
+		$(".button-collapse").sideNav();
 	});
 </script>
 

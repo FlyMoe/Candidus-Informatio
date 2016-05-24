@@ -1,10 +1,24 @@
-
-.modalLG
-{
-	width: 90%;
-	text-align: left;
+#demo {
+	width: 30px;
 }
-.infobox
-{
-	float:right;
+
+#rep {
+	width: 40px;
+}
+
+#parallax1 {
+}
+
+#youTubeIcon {
+	color: #cc181e;
+	padding-right: 5px;
+}
+
+#faceIcon {
+	color: #365899;
+	padding-right: 5px;
+}
+
+#twitterIcon {
+	padding-right: 5px;
 }

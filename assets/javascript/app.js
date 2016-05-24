@@ -31,7 +31,7 @@ $(document).on('click','.modal-trigger',function(){
 		var url = 'https://www.googleapis.com/civicinfo/v2/representatives?';
 		var apiKey = 'key=AIzaSyBYo9BM0LkbN7SIHRGcQOGrG8bhCJFW3B4';
 		var addressValue = $("#addressInput").val();
-		var address = "&address=" + addressValue
+		var address = "&address=" + addressValue;
 
 		var queryURL = url + apiKey + address;
 		//Ajax call to retreive info
@@ -104,13 +104,25 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$(listItemRep).append(img);
 			//span and span properties for each representative's name
 			var span = $("<span>").attr("class", "title repHeader");
-			$(span).append('<br>' + official[office[i].officialIndices[j]].name);
+			$(span).append('<br>' + official[office[i].officialIndices[j]].name + '<hr>');
 			$(listItemRep).append(span);
 			//p and p properties for each representative party, other info
-			var p = $("<p>").text("Party: " + official[office[i].officialIndices[j]].party);// + "<br>Website: " + official[office[i].officialIndices[j]].urls[0] );
-			$(listItemRep).append(p);
-			//favorite icon to add politician as favorite to be implemented in the future
-			$(listItemRep).append('<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>');
+			// var p = $("<p>").text("Party: " + official[office[i].officialIndices[j]].party);// + "<br>Website: " + official[office[i].officialIndices[j]].urls[0] );
+			// $(listItemRep).append(p);
+			// adding font awesome icons to candidate
+			$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
+			$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
+			$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+			// $(listItemRep).append('<i class="fa fa-wikipedia-w fa-2x" aria-hidden="true"></i>');
+			console.log("p: " + official[office[i].officialIndices[j]].party);
+
+			if (official[office[i].officialIndices[j]].party == "Democratic") {
+				// alert("hello");
+				$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">');
+				} else if (official[office[i].officialIndices[j]].party == "Republican") {
+					$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">');
+				}
+
 			$(list).append(listItemRep);
 		}
 	}
