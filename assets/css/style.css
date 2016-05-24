@@ -1,4 +1,6 @@
-
+body {
+	font-size: 20px;
+}
 .modalLG
 {
 	width: 90%;
@@ -7,4 +9,12 @@
 .infobox
 {
 	float:right;
+}
+.officeHeader {
+	color: white;
+	background: #1976D2 !important;
+}
+.listHeader {
+	color: white;
+	background: #D32F2F !important;
 }

@@ -1,3 +1,8 @@
+
+// Add disabled class to the search tabs.
+// We only want the classes to show if we have search results.
+$("li.tab").addClass("disabled");
+
 //modal triggers
 
 $(document).on('click','.modal-trigger',function(){
@@ -110,12 +115,15 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			var p = $("<p>").text("Party: " + official[office[i].officialIndices[j]].party);// + "<br>Website: " + official[office[i].officialIndices[j]].urls[0] );
 			$(listItemRep).append(p);
 			//favorite icon to add politician as favorite to be implemented in the future
-			$(listItemRep).append('<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>');
+			$(listItemRep).append('<a href="#!" class="secondary-content"></a>');
 			$(list).append(listItemRep);
 		}
 	}
 	//adds entire list to div
 	$("#repInfo").append(list);
+
+	// We have data now, so remove the disabled class from the tabs
+	$("li").removeClass("disabled");
 });
 });
 
