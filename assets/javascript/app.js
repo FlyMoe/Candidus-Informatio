@@ -117,6 +117,8 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			//favorite icon to add politician as favorite to be implemented in the future
 			$(listItemRep).append('<a href="#!" class="secondary-content"></a>');
 			$(list).append(listItemRep);
+
+			getArticles(official[office[i].officialIndices[j]].name);
 		}
 	}
 	//adds entire list to div
@@ -126,5 +128,39 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	$("li").removeClass("disabled");
 });
 });
+
+function getArticles(candidateName) {
+	console.log("candidateName: "+candidateName);
+	// Split name
+	var candidateNameArray = candidateName.split(" ");
+	var firstName = candidateNameArray[0];
+	var lastName = candidateNameArray[1];
+
+	// Number of days to go back in time to get the articles
+	var days = 3;
+
+	// Richard API Key
+	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+	// Alex API Key
+	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	
+	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
+	
+	$.ajax({
+	        url: queryURL,
+	        method: 'GET'
+	    })           
+	.done(function(response) {
+		   	    
+		for (var i = 0; i < response.result.docs.length; i++) {
+			var url = response.result.docs[i].source.enriched.url.url;
+	        var title = response.result.docs[i].source.enriched.url.title;
+            var hostname = $('<a>').prop('href', url).prop('hostname');
+	        var candidateDiv = $("#articles").append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+		}
+	});
+
+	return false;   
+}
 
 
