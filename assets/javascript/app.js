@@ -98,14 +98,22 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			//saves representatives name for wiki search
 			$(listItemRep).attr("data-repname", official[office[i].officialIndices[j]].name );
 			//image and img properties for each representative
-			var img = $("<img>");
+			var img = $("<img>"); 
+			// we can add a responsive image effect if we want
 			$(img).attr("src", official[office[i].officialIndices[j]].photoUrl);
 			$(img).css("max-height", "200px");
 			$(listItemRep).append(img);
 			//span and span properties for each representative's name
 			var span = $("<span>").attr("class", "title repHeader");
-			$(span).append('<br>' + official[office[i].officialIndices[j]].name + '<hr>');
+			$(span).append('<br>' + official[office[i].officialIndices[j]].name);
 			$(listItemRep).append(span);
+
+			if (official[office[i].officialIndices[j]].party == "Democratic") {
+				// alert("hello");
+				$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">' + "<br>");
+				} else if (official[office[i].officialIndices[j]].party == "Republican") {
+					$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">' + "<br>");
+				}
 			//p and p properties for each representative party, other info
 			// var p = $("<p>").text("Party: " + official[office[i].officialIndices[j]].party);// + "<br>Website: " + official[office[i].officialIndices[j]].urls[0] );
 			// $(listItemRep).append(p);
@@ -113,15 +121,6 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
 			$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
 			$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
-			// $(listItemRep).append('<i class="fa fa-wikipedia-w fa-2x" aria-hidden="true"></i>');
-			console.log("p: " + official[office[i].officialIndices[j]].party);
-
-			if (official[office[i].officialIndices[j]].party == "Democratic") {
-				// alert("hello");
-				$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">');
-				} else if (official[office[i].officialIndices[j]].party == "Republican") {
-					$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">');
-				}
 
 			$(list).append(listItemRep);
 		}
