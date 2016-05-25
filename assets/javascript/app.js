@@ -1,7 +1,7 @@
 //modal triggers
 
 $(document).on('click','.modal-trigger',function(){
-	
+
 
 	if($(this).data("target") == "modal1")
 	{
