@@ -1,3 +1,4 @@
+
 #demo {
 	width: 30px;
 }
@@ -11,13 +12,34 @@
 	padding-right: 5px;
 }
 
+body {
+	font-size: 20px;
+}
+.modalLG
+{
+	width: 90%;
+	text-align: left;
+
+}
+
 #faceIcon {
 	color: #365899;
 	padding-right: 5px;
 	padding-left: 5px;
 }
 
+
 #twitterIcon {
 	padding-right: 5px;
+}
+
+
+.officeHeader {
+	color: white;
+	background: #1976D2 !important;
+}
+.listHeader {
+	color: white;
+	background: #D32F2F !important;
 }
 

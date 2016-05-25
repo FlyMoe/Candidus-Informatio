@@ -1,11 +1,28 @@
+
+
+// Add disabled class to the search tabs.
+// We only want the classes to show if we have search results.
+$("li.tab").addClass("disabled");
+
 //modal triggers
+
+//global tab varaiables
+
+var list;
+var fedList;
+var stateList;
+var localList;
+
+
+
+
 
 $(document).on('click','.modal-trigger',function(){
 
 
 	if($(this).data("target") == "modal1")
 	{
-		var searchPage = $(this).data("repname");
+		var searchPage = $(this).data("repsearch");
 		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
 			console.log(json);
     	var printDiv = $('<div>').html(json.parse.text['*']); 
@@ -13,11 +30,20 @@ $(document).on('click','.modal-trigger',function(){
     			var src = $(this).attr("src");
     			return ('https:' + src);
     	});
+    	$(printDiv).find('a').replaceWith(function(){
+    			var text = $(this).text();
+    			return text;
+    	});
+
+    	
     	$(printDiv).find(".hatnote").remove();
+    	$(printDiv).find(".reference").remove();
+    	$(printDiv).find(".nowrap").remove();
     	$(printDiv).find(".vertical-navbox").remove();
+    	$(printDiv).find(".noprint").remove();
     	$("#wikiInfo").html(printDiv);
-    	//$("#wikiInfo").find("a:not(.references a)").attr("href", function(){ return "http://www.wikipedia.org" + $(this).attr("href");}); 
-    	//$("#wikiInfo").find("a").attr("target", "_blank"); 
+    	$("div[id*='toc']").nextUntil(removeEnd).remove();
+    	$('#modal1').openModal();
   });
 	}
 
@@ -40,10 +66,9 @@ $(document).on('click','.modal-trigger',function(){
 			var addressResponse = response.normalizedInput;
 			$("#userAddress").append(addressResponse.line1+ "<br>" + addressResponse.city + " " + addressResponse.state + " " + addressResponse.zip);
 		});
+		$('#modal2').openModal();
 	}
 
-	// the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-	$('.modal-trigger').leanModal();
 });
 
 
@@ -63,31 +88,27 @@ var queryURL = url + apiKey + address;
 //Ajax call to retreive info
 $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	//list and list item which will contain query response
-	var list = $("<ul>").attr("class", "collection with-header");
+	list = $("<ul>").attr("class", "collection with-header");
 	var listItemHeader = $("<li>");
 	console.log(response);
 	//Shortcut variables assigned so that data calls are truncated
+	var division = response.divisions;
+	console.log(division);
 	var office = response.offices;
 	var official = response.officials;
-
 	//Main header for list
 	$(listItemHeader).attr("class", "collection-header listHeader");
 	$(listItemHeader).append("<h4>Representatives</h4>");
 	$(list).append(listItemHeader);
-	
-	//for each office in the results
-	for(var i = 0; i<office.length; i++ )
+	//for each division in the results
+	$.each(division, function(key,value)
 	{
-		//list item which will contain query response
-		var listItemOffice = $("<li>");
-		//for each itteration set class back to header
-		$(listItemOffice).attr("class", "collection-header officeHeader");
-		//pushes headers for office names
-		$(listItemOffice).append('<h4>' + office[i].name + '</h4>');
-		$(list).append(listItemOffice);
-		//for each individual who holds that office
-		for(var j = 0; j< office[i].officialIndices.length; j++)
+		console.log(key);
+		console.log(value);
+		//for each office in the results
+		for(var i = 0; i<value.officeIndices.length; i++ )
 		{
+
 			var listItemRep = $("<li>");
 			//sets list item elements to collection items
 			$(listItemRep).attr("class", "collection-item avatar modal-trigger");
@@ -123,11 +144,99 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
 
 			$(list).append(listItemRep);
+
+			console.log(office[value.officeIndices[i]]);
+			console.log(value.officeIndices[i]);
+			//list item which will contain query response
+			var listItemOffice = $("<li>");
+			//for each itteration set class back to header
+			$(listItemOffice).attr("class", "collection-header officeHeader");
+			//pushes headers for office names
+			$(listItemOffice).append('<h4>' + office[value.officeIndices[i]].name + '</h4>');
+			$(list).append(listItemOffice);
+			//for each individual who holds that office
+			for(var j = 0; j< office[value.officeIndices[i]].officialIndices.length; j++)
+			{
+				console.log(official[office[value.officeIndices[i]].officialIndices[j]]);
+				console.log(office[value.officeIndices[i]].officialIndices[j]);
+				var listItemRep = $("<li>");
+				//sets list item elements to collection items
+				$(listItemRep).attr("class", "collection-item avatar modal-trigger");
+				//enables each item to load larger modal with detailed info
+				$(listItemRep).attr("href", "#modal1");
+				//target data
+				$(listItemRep).attr("data-target", "modal1");
+				//saves representatives name for wiki search
+				//if()
+				//{
+				$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
+				console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
+				//}
+				//else
+				//{
+				//	$(listItemRep).attr("data-repSearch", official[office[i].officialIndices[j]].name + " " + response.normalizedInput.state. + " politician");
+				//}
+				//image and img properties for each representative
+				var img = $("<img>");
+				$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
+				$(img).css("max-height", "200px");
+				$(listItemRep).append(img);
+				//span and span properties for each representative's name
+				var span = $("<span>").attr("class", "title repHeader");
+				$(span).append('<br>' + official[office[value.officeIndices[i]].officialIndices[j]].name);
+				$(listItemRep).append(span);
+				//p and p properties for each representative party, other info
+				var p = $("<p>").text("Party: " + official[office[value.officeIndices[i]].officialIndices[j]].party);// + "<br>Website: " + official[office[i].officialIndices[j]].urls[0] );
+				$(listItemRep).append(p);
+				//favorite icon to add politician as favorite to be implemented in the future
+				$(listItemRep).append('<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>');
+				$(list).append(listItemRep);
+
+				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name);
+			}
+
 		}
-	}
+	});
 	//adds entire list to div
 	$("#repInfo").append(list);
+
+	// We have data now, so remove the disabled class from the tabs
+	$("li").removeClass("disabled");
 });
 });
+
+function getArticles(candidateName) {
+	console.log("candidateName: "+candidateName);
+	// Split name
+	var candidateNameArray = candidateName.split(" ");
+	var firstName = candidateNameArray[0];
+	var lastName = candidateNameArray[1];
+
+	// Number of days to go back in time to get the articles
+	var days = 3;
+
+	// Richard API Key
+	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+	// Alex API Key
+	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	
+	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
+	
+	$.ajax({
+	        url: queryURL,
+	        method: 'GET'
+	    })           
+	.done(function(response) {
+		   	    
+		for (var i = 0; i < response.result.docs.length; i++) {
+			var url = response.result.docs[i].source.enriched.url.url;
+	        var title = response.result.docs[i].source.enriched.url.title;
+            var hostname = $('<a>').prop('href', url).prop('hostname');
+	        var candidateDiv = $("#articles").append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+		}
+	});
+
+	return false;   
+}
 
 
