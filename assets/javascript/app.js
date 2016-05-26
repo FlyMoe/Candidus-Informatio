@@ -113,7 +113,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			//list item which will contain query response
 			var listItemOffice = $("<li>");
 			//for each itteration set class back to header
-			$(listItemOffice).attr("class", "collection-header officeHeader");
+			$(listItemOffice).attr("class", "collection-header officeHeader center");
 			//pushes headers for office names
 			$(listItemOffice).append('<h4>' + office[value.officeIndices[i]].name + '</h4>');
 			$(list).append(listItemOffice);
@@ -124,7 +124,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				console.log(office[value.officeIndices[i]].officialIndices[j]);
 				var listItemRep = $("<li>");
 				//sets list item elements to collection items
-				$(listItemRep).attr("class", "collection-item avatar modal-trigger");
+				$(listItemRep).attr("class", "collection-item avatar modal-trigger card-panel hoverable");
 				//enables each item to load larger modal with detailed info
 				$(listItemRep).attr("href", "#modal1");
 				//target data
