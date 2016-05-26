@@ -18,7 +18,7 @@ var localList;
 var counter = 0;
 
 $(document).on('click','.modal-trigger',function(){
-	
+
 
 	if($(this).data("target") == "modal1")
 	{
@@ -148,9 +148,19 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				var span = $("<span>").attr("class", "title repHeader");
 				$(span).append('<br>' + official[office[value.officeIndices[i]].officialIndices[j]].name);
 				$(listItemRep).append(span);
-				//p and p properties for each representative party, other info
-				var p = $("<p>").text("Party: " + official[office[value.officeIndices[i]].officialIndices[j]].party);// + "<br>Website: " + official[office[i].officialIndices[j]].urls[0] );
-				$(listItemRep).append(p);
+	
+				if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic") {
+				// alert("hello");
+				$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">' + "<br>");
+				} else if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Republican") {
+					$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">' + "<br>");
+				}
+
+				// adding font awesome icons to candidate
+				$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
+				$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
+				$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+
 				$(list).append(listItemRep);
 				// Div for articles
 				var div = $("<div>").attr("class", "articles"+counter);
@@ -160,6 +170,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				// Update the counter
 				counter++;
 			}
+
 		}
 	});
 	//adds entire list to div
