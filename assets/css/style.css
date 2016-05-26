@@ -48,6 +48,15 @@ body {
 	font-family: 'Oleo Script', cursive;
 }
 
+
+.art {
+	float: right;
+}
+.imgCanidates {
+	/*float: left;*/
+}
+
+
 li {
 	/*font-family: 'Acme', sans-serif;*/
 	/*font-family: 'Abril Fatface', cursive;*/
@@ -78,3 +87,4 @@ li {
 #submitAddress {
 	font-family: 'Montserrat', sans-serif;
 }
+
