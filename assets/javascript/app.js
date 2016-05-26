@@ -19,7 +19,13 @@ var localList;
 
 $(document).on('click','.modal-trigger',function(){
 
-	// alex logic changes 
+	// alex logic changes
+	// I did something that removes the parallax images until you do a search and also the chart does not appear until search is pressed...
+	// the original .parallax jquery was inside the index file
+
+	// I am also able to locally store information to firebase
+	// when I tried to somehow have the code recognize the party of the candidate it breaks
+
 		$(document).ready(function(){
 		$('.parallax').parallax();
 		$(".button-collapse").sideNav();
@@ -31,7 +37,9 @@ $(document).on('click','.modal-trigger',function(){
 		var democrats = 0;
 		var republicans = 0;
 
-		// capture clicks
+		// capture clicks in attempt to determine the person we click on is infact a democrat or republican
+		// from here adding to the object so the graph can also update is lost to me
+		// every time i click on the modal i get an undefine error for official
 		$("#modal1").on("click", function() {
 			if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic") {
 				democrats++;
@@ -41,6 +49,7 @@ $(document).on('click','.modal-trigger',function(){
 				console.log("repubclicks:" + repubclicks);
 			}
 
+		// my set to firebase works in a local level
 		dataRef.set({
 		democrats: democrats,
 		republicans: republicans,
@@ -48,6 +57,11 @@ $(document).on('click','.modal-trigger',function(){
 	})
 });
 
+
+	// this is the basic chart
+	// can't change the colors
+	// its an object, thats inside another object
+	// if we can get the vars from the clicks to also add to the .clicks in the chart then the pie chart will update...
 	var chart = AmCharts.makeChart("chartdiv", {
     "type": "pie",
 	"theme": "none",
@@ -72,6 +86,7 @@ $(document).on('click','.modal-trigger',function(){
 });
 });
 
+// i think the location of some of this code is the main issues besides the fact that its beyond me
 // end of alex logic changes
 
 
