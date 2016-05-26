@@ -4,6 +4,9 @@
 // We only want the classes to show if we have search results.
 $("li.tab").addClass("disabled");
 
+// Empty the articles div
+$("div.articles").empty();
+
 //modal triggers
 
 //global tab varaiables
@@ -12,10 +15,7 @@ var list;
 var fedList;
 var stateList;
 var localList;
-
-
-
-
+var counter = 0;
 
 $(document).on('click','.modal-trigger',function(){
 	
@@ -151,11 +151,14 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				//p and p properties for each representative party, other info
 				var p = $("<p>").text("Party: " + official[office[value.officeIndices[i]].officialIndices[j]].party);// + "<br>Website: " + official[office[i].officialIndices[j]].urls[0] );
 				$(listItemRep).append(p);
-				//favorite icon to add politician as favorite to be implemented in the future
-				$(listItemRep).append('<a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>');
 				$(list).append(listItemRep);
-
-				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name);
+				// Div for articles
+				var div = $("<div>").attr("class", "articles"+counter);
+				$(listItemRep).append(div);
+				// Call the getArticles
+				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
+				// Update the counter
+				counter++;
 			}
 		}
 	});
@@ -167,7 +170,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 });
 });
 
-function getArticles(candidateName) {
+function getArticles(candidateName, counter) {
 	console.log("candidateName: "+candidateName);
 	// Split name
 	var candidateNameArray = candidateName.split(" ");
@@ -177,10 +180,12 @@ function getArticles(candidateName) {
 	// Number of days to go back in time to get the articles
 	var days = 3;
 
-	// Richard API Key
+	// Richard's API Key
 	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
-	// Alex API Key
-	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	// Alex's API Key
+	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	// Jonathan's API Key
+	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
 	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
@@ -189,12 +194,12 @@ function getArticles(candidateName) {
 	        method: 'GET'
 	    })           
 	.done(function(response) {
-		   	    
+		 console.log(response);  	    
 		for (var i = 0; i < response.result.docs.length; i++) {
 			var url = response.result.docs[i].source.enriched.url.url;
 	        var title = response.result.docs[i].source.enriched.url.title;
             var hostname = $('<a>').prop('href', url).prop('hostname');
-	        var candidateDiv = $("#articles").append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
 		}
 	});
 
