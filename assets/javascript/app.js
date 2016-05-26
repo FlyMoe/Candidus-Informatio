@@ -4,18 +4,11 @@
 // We only want the classes to show if we have search results.
 $("li.tab").addClass("disabled");
 
+var controler = {
+	addressValue: null
+};
+
 //modal triggers
-
-//global tab varaiables
-
-var list;
-var fedList;
-var stateList;
-var localList;
-
-
-
-
 
 $(document).on('click','.modal-trigger',function(){
 
@@ -56,8 +49,8 @@ $(document).on('click','.modal-trigger',function(){
 		//API url call info
 		var url = 'https://www.googleapis.com/civicinfo/v2/representatives?';
 		var apiKey = 'key=AIzaSyBYo9BM0LkbN7SIHRGcQOGrG8bhCJFW3B4';
-		var addressValue = $("#addressInput").val();
-		var address = "&address=" + addressValue;
+		controler.addressValue = $("#addressInput").val();
+		var address = "&address=" + controler.addressValue;
 
 		var queryURL = url + apiKey + address;
 		//Ajax call to retreive info
@@ -71,18 +64,64 @@ $(document).on('click','.modal-trigger',function(){
 
 });
 
+//user filter
+$(".tab").on("click" , function(){
+	var filter = $(this).data("filter");
+	getCivicData(filter);	
+
+});
 
 
 //When user confirms address
 $("#commenceQuery").on("click" , function(){
-//Empty the previously displayed representative info
-$("#repInfo").empty();	
+
+	getCivicData("all");
+	// We have data now, so remove the disabled class from the tabs
+	$("li").removeClass("disabled");
+	return false;
+});
+/*
+function getArticles(candidateName) {
+	console.log("candidateName: "+candidateName);
+	// Split name
+	var candidateNameArray = candidateName.split(" ");
+	var firstName = candidateNameArray[0];
+	var lastName = candidateNameArray[1];
+
+	// Number of days to go back in time to get the articles
+	var days = 3;
+
+	// Richard API Key
+	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+	// Alex API Key
+	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	
+	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
+	
+	$.ajax({
+	        url: queryURL,
+	        method: 'GET'
+	    })           
+	.done(function(response) {
+		   	    
+		for (var i = 0; i < response.result.docs.length; i++) {
+			var url = response.result.docs[i].source.enriched.url.url;
+	        var title = response.result.docs[i].source.enriched.url.title;
+            var hostname = $('<a>').prop('href', url).prop('hostname');
+	        var candidateDiv = $("#articles").append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+		}
+	});
+
+	return false;   
+}
+*/
+function getCivicData(filter)
+{	
 
 //API url call info
 var url = 'https://www.googleapis.com/civicinfo/v2/representatives?';
 var apiKey = 'key=AIzaSyBYo9BM0LkbN7SIHRGcQOGrG8bhCJFW3B4';
-var addressValue = $("#addressInput").val();
-var address = "&address=" + addressValue
+var address = "&address=" + controler.addressValue;
 
 var queryURL = url + apiKey + address;
 //Ajax call to retreive info
@@ -105,6 +144,27 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	{
 		console.log(key);
 		console.log(value);
+
+		if(filter == "federal")
+		{
+			if(value.name != "United States")
+				return;
+		}
+		else if(filter == "state")
+		{
+			if(value.name != "Florida")
+				return;
+		}
+		else if (filter == "local")
+		{
+			if(value.name == "Florida" || value.name == "United States")
+				return;
+		}
+		else
+		{
+
+		}
+
 		//for each office in the results
 		for(var i = 0; i<value.officeIndices.length; i++ )
 		{
@@ -149,10 +209,12 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				$(span).append('<br>' + official[office[value.officeIndices[i]].officialIndices[j]].name);
 				$(listItemRep).append(span);
 				
-				if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic") {
-				// alert("hello");
-				$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">' + "<br>");
-				} else if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Republican") {
+				if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic")
+				{
+					$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">' + "<br>");
+				}
+				else if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Republican")
+				{
 					$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">' + "<br>");
 				}
 
@@ -165,51 +227,15 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
 				$(list).append(listItemRep);
 
-				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name);
+				//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name);
 			}
 
 		}
 	});
+	//Empty the previously displayed representative info
+	$("#repInfo").empty();
 	//adds entire list to div
 	$("#repInfo").append(list);
-
-	// We have data now, so remove the disabled class from the tabs
-	$("li").removeClass("disabled");
-});
 });
 
-function getArticles(candidateName) {
-	console.log("candidateName: "+candidateName);
-	// Split name
-	var candidateNameArray = candidateName.split(" ");
-	var firstName = candidateNameArray[0];
-	var lastName = candidateNameArray[1];
-
-	// Number of days to go back in time to get the articles
-	var days = 3;
-
-	// Richard API Key
-	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
-	// Alex API Key
-	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
-	
-	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
-	
-	$.ajax({
-	        url: queryURL,
-	        method: 'GET'
-	    })           
-	.done(function(response) {
-		   	    
-		for (var i = 0; i < response.result.docs.length; i++) {
-			var url = response.result.docs[i].source.enriched.url.url;
-	        var title = response.result.docs[i].source.enriched.url.title;
-            var hostname = $('<a>').prop('href', url).prop('hostname');
-	        var candidateDiv = $("#articles").append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
-		}
-	});
-
-	return false;   
 }
-
-
