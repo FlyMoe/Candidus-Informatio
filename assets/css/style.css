@@ -47,3 +47,10 @@ body {
 	font-weight: 900;
 }
 
+.art {
+	float: right;
+}
+.imgCanidates {
+	/*float: left;*/
+}
+

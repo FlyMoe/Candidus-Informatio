@@ -142,8 +142,20 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				//image and img properties for each representative
 				var img = $("<img>");
 				$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
+				$(img).attr("class", "imgCanidates");
 				$(img).css("max-height", "200px");
 				$(listItemRep).append(img);
+
+				// Div for articles
+				var div = $("<div>").attr("class", "articles"+counter);
+				$(div).attr("class", "art");
+				$(div).html("article "+counter);
+				$(listItemRep).append(div);
+				// Call the getArticles
+				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
+				// Update the counter
+				counter++;
+
 				//span and span properties for each representative's name
 				var span = $("<span>").attr("class", "title repHeader");
 				$(span).append('<br>' + official[office[value.officeIndices[i]].officialIndices[j]].name);
@@ -162,13 +174,6 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
 
 				$(list).append(listItemRep);
-				// Div for articles
-				var div = $("<div>").attr("class", "articles"+counter);
-				$(listItemRep).append(div);
-				// Call the getArticles
-				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
-				// Update the counter
-				counter++;
 			}
 
 		}

@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -8,11 +8,11 @@
 	<!-- Compiled and minified CSS -->
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
-  	<!-- google font -->
-  	<link href='https://fonts.googleapis.com/css?family=Merriweather' rel='stylesheet' type='text/css'>
-
   	<!-- font awesome -->
-  	<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css" type="text/css">
+  	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
 	<!-- reset css src -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -38,29 +38,25 @@
 </head>
 <body>
 
-<nav class="blue darken-2">
-	<div class="container">
-		<div class="nav-wrapper">
-			<a href="index.html" class="brand-logo">Candidus-Informatio</a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="index.html">Home</a></li>
-					<li><a class="page-scroll" href="#main-input">Search</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contactus.html">Contact Us</a></li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li><a href="index.html">Home</a></li>
-					<li><a class="page-scroll" href="#main-input">Search</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contactus.html">Contact Us</a></li>
-				</ul>				
+
+
+<div class="navbar-fixed">
+	<nav class="blue darken-2">
+		<div class="container">
+			<div class="nav-wrapper">
+				<a href="index.html" class="brand-logo">Candidus-Informatio</a>
+					<ul id="nav-mobile" class="right hide-on-med-and-down">
+						<li><a href="index.html">Home</a></li>
+						<li><a href="about.html">About</a></li>
+						<li><a href="contactus.html">Contact Us</a></li>
+					</ul>				
+			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
+</div>
 
 
-<div id="parallax1" class="parallax-container">
+<div class="parallax-container">
 	<div class="parallax"><img src="assets/images/capitol-building1.jpg"></div>
 </div>
 
@@ -72,7 +68,7 @@
 					<input placeholder="address..." id="addressInput" type="text" class="validate">
 					<label for="address-input"></label>
 					<!-- Modal Trigger from materialize example -->
-					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2" href="#modal2">Search</a>
+					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
 				</div>
 			</div>
 		</form>
@@ -88,11 +84,12 @@
      		 </ul>
     	</div>
 		<div class="col s12">
-			<div id="repInfo">
-			</div>
+			<div id="repInfo"></div>
+			<div id="articles"> </div>
 		</div>
 	</div>
 </div>
+
 
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal modalLG">
@@ -102,7 +99,6 @@
 					<div class ="col l12">
 						<div id="wikiInfo"> </div>
 						<div id="removeEnd"></div>
-						<div id="articles"> </div>
 					</div>
 				</div>
 			</div>	
@@ -137,13 +133,12 @@
 <script>
 	$(document).ready(function(){
 		$('.parallax').parallax();
-		$(".button-collapse").sideNav();
 	});
 </script>
 
 
 <!-- added footer with red color -->
-<footer id="red-footer" class="page-footer red darken-2">
+<footer class="page-footer red darken-2">
 	<div class="container">
 		<div class="footer-copyright">
 			Copyright &copy; 2016 Candidus-Informatio.com | All rights reserved.
