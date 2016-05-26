@@ -16,6 +16,10 @@ var fedList;
 var stateList;
 var localList;
 var counter = 0;
+var url ='https://intense-heat-9862.firebaseio.com/'
+var dataRef = new Firebase(url);
+var demoCounter = 1;
+var repubCounter = 1;
 
 $(document).on('click','.modal-trigger',function(){
 
@@ -129,6 +133,8 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				$(listItemRep).attr("href", "#modal1");
 				//target data
 				$(listItemRep).attr("data-target", "modal1");
+
+				$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
 				//saves representatives name for wiki search
 				//if()
 				//{
@@ -186,6 +192,33 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 });
 });
 
+
+
+
+$('[data-target]').on("click", function() {
+
+	// // Clear the Database
+	// dataRef.remove();
+alert("yoyoyo");
+	/***************** Add Player's Name ****************/
+	var searchPage = $(this).data("repsearch");
+	console.log("searchPage: " + searchPage);
+	if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic") {
+		alert("demo");
+		dataRef.update({
+			"party/democrat": demoCounter
+		})
+
+	} else {
+		alert("rebub");
+		dataRef.update({
+			"party/republican": repubCounter
+		})
+
+	}
+
+});
+
 function getArticles(candidateName, counter) {
 	console.log("candidateName: "+candidateName);
 	// Split name
@@ -221,5 +254,3 @@ function getArticles(candidateName, counter) {
 
 	return false;   
 }
-
-

@@ -6,6 +6,8 @@
 	<!-- Compiled and minified CSS -->
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
+  	<link href='https://fonts.googleapis.com/css?family=Acme|Abril+Fatface|Oleo+Script:400,700|Montserrat:400,700|Timmana' rel='stylesheet' type='text/css'>
+
 	<!-- reset css src -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
@@ -25,34 +27,32 @@
  	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
 
  	<!-- ****** FireBase Src Link ****** -->
-	<!-- <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script> -->
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 
 
 </head>
 <body background="assets/images/voting-flag1.jpg">
 
-<div class="navbar-fixed">
-	<nav class="blue darken-2">
-		<div class="container">
-			<div class="nav-wrapper">
-				<a href="index.html" class="brand-logo">Candidus-Informatio</a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+<nav id="bar" class="blue darken-2">
+	<div class="container">
+		<div class="nav-wrapper">
+			<a href="index.html" class="brand-logo">Candidus-Informatio</a>
+			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 				<ul id="nav-mobile" class="right hide-on-med-and-down">
 					<li><a href="index.html">Home</a></li>
-					<!-- <li><a class="page-scroll" href="#main-input">Search</a></li> -->
+					<li><a class="page-scroll" href="#main-input">Search</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contactus.html">Contact Us</a></li>
 				</ul>
 				<ul class="side-nav" id="mobile-demo">
 					<li><a href="index.html">Home</a></li>
+					<li><a class="page-scroll" href="#main-input">Search</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contactus.html">Contact Us</a></li>
-				</ul>				
-			</div>
+				</ul>
 		</div>
-	</nav>
-</div>
-	
+	</div>
+</nav>
 
 
 <div class="container">
@@ -77,7 +77,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 <!-- javascript src -->
- <script type="text/javascript" src="assets/javascript/app.js"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+
+<!-- javascript firebase src -->
+<script type="text/javascript" src="assets/javascript/firebase.js"></script>
 
 <script>
 	$(document).ready(function(){
