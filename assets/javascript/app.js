@@ -19,6 +19,61 @@ var localList;
 
 $(document).on('click','.modal-trigger',function(){
 
+	// alex logic changes 
+		$(document).ready(function(){
+		$('.parallax').parallax();
+		$(".button-collapse").sideNav();
+
+		var url = "https://dazzling-torch-1929.firebaseio.com"
+
+		var dataRef = new Firebase(url);
+
+		var democrats = 0;
+		var republicans = 0;
+
+		// capture clicks
+		$("#modal1").on("click", function() {
+			if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic") {
+				democrats++;
+				console.log("democlicks:" + democrats);
+			} else if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Republican") {
+				republicans++;
+				console.log("repubclicks:" + repubclicks);
+			}
+
+		dataRef.set({
+		democrats: democrats,
+		republicans: republicans,
+		dateAdded: Firebase.ServerValue.TIMESTAMP
+	})
+});
+
+	var chart = AmCharts.makeChart("chartdiv", {
+    "type": "pie",
+	"theme": "none",
+    "dataProvider": [
+{
+        "party	": "Democratic",
+        "clicks": 3
+    },
+{
+        "party": "Republican",
+        "clicks": 2
+    }, {
+        "party": "Other",
+        "clicks": 1
+    }],
+
+    "valueField": "clicks",
+    "titleField": "party",
+    //"radius": "28%",
+    "labelRadius": 4,
+    "labelText": "[[percents]]%"
+});
+});
+
+// end of alex logic changes
+
 
 	if($(this).data("target") == "modal1")
 	{
