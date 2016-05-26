@@ -45,5 +45,36 @@ body {
 
 .repHeader {
 	font-weight: 900;
+	font-family: 'Oleo Script', cursive;
 }
 
+li {
+	/*font-family: 'Acme', sans-serif;*/
+	/*font-family: 'Abril Fatface', cursive;*/
+	/*font-family: 'Oleo Script', cursive;*/
+	font-family: 'Montserrat', sans-serif;
+}
+
+.brand-logo {
+	/*font-family: 'Acme', sans-serif;*/
+	/*font-family: 'Abril Fatface', cursive;*/
+	/*font-family: 'Oleo Script', cursive;*/
+	font-family: 'Montserrat', sans-serif;
+	/*font-family: 'Timmana', sans-serif;*/
+	font-size: 35px;
+	padding-top: 10px;
+}
+
+.listHeader{
+	font-weight: 900;
+	font-size: 35px;
+}
+
+#bar {
+	height: 38px;
+
+}
+
+#submitAddress {
+	font-family: 'Montserrat', sans-serif;
+}
