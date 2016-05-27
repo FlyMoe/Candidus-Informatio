@@ -17,21 +17,46 @@ $("div.articles").empty();
 
 //global tab varaiables
 
-var list;
-var fedList;
-var stateList;
-var localList;
+
 var counter = 0;
-var url ='https://intense-heat-9862.firebaseio.com/'
+var url ='https://intense-inferno-5888.firebaseio.com/'
 var dataRef = new Firebase(url);
 var demoCounter = 1;
 var repubCounter = 1;
+var otherCounter = 1;
 
 $(document).on('click','.modal-trigger',function(){
 
 
 	if($(this).data("target") == "modal1")
 	{
+		//firebase update
+		var party = $(this).data("party");
+		if ( party == "Democratic")
+		{
+			demoCounter++;
+			dataRef.update({
+				"party_democrat": demoCounter
+			});
+		} 
+		else if ( party == "Republican")
+		{
+			repubCounter++;
+			dataRef.update({
+				"party_republican": repubCounter
+			});
+		}
+		else 
+		{
+			otherCounter++;
+			dataRef.update({
+				"party_Other": otherCounter
+			});
+		}
+
+
+
+		//Wiki search
 		var searchPage = $(this).data("repsearch");
 		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
 			console.log(json);
@@ -123,140 +148,118 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	$(listItemHeader).append("<h4>Representatives</h4>");
 	$(list).append(listItemHeader);
 	//for each division in the results
-	$.each(division, function(key,value)
-	{
-		console.log(key);
-		console.log(value);
+		$.each(division, function(key,value)
+		{
+			console.log(key);
+			console.log(value);
 
-		if(filter == "federal")
-		{
-			if(value.name != "United States")
-				return;
-		}
-		else if(filter == "state")
-		{
-			if(value.name != "Florida")
-				return;
-		}
-		else if (filter == "local")
-		{
-			if(value.name == "Florida" || value.name == "United States")
-				return;
-		}
-		else
-		{
-
-		}
-
-		//for each office in the results
-		for(var i = 0; i<value.officeIndices.length; i++ )
-		{
-			console.log(office[value.officeIndices[i]]);
-			console.log(value.officeIndices[i]);
-			//list item which will contain query response
-			var listItemOffice = $("<li>");
-			//for each itteration set class back to header
-			$(listItemOffice).attr("class", "collection-header officeHeader center");
-			//pushes headers for office names
-			$(listItemOffice).append('<h4>' + office[value.officeIndices[i]].name + '</h4>');
-			$(list).append(listItemOffice);
-			//for each individual who holds that office
-			for(var j = 0; j< office[value.officeIndices[i]].officialIndices.length; j++)
+			if(filter == "federal")
 			{
-				console.log(official[office[value.officeIndices[i]].officialIndices[j]]);
-				console.log(office[value.officeIndices[i]].officialIndices[j]);
-				var listItemRep = $("<li>");
-				//sets list item elements to collection items
-				$(listItemRep).attr("class", "collection-item avatar modal-trigger card-panel hoverable");
-				//enables each item to load larger modal with detailed info
-				$(listItemRep).attr("href", "#modal1");
-				//target data
-				$(listItemRep).attr("data-target", "modal1");
+				if(value.name != "United States")
+					return;
+			}
+			else if(filter == "state")
+			{
+				if(value.name != "Florida")
+					return;
+			}
+			else if (filter == "local")
+			{
+				if(value.name == "Florida" || value.name == "United States")
+					return;
+			}
+			else
+			{
 
-				$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
-				//saves representatives name for wiki search
-				//if()
-				//{
-				$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
-				console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
-				//}
-				//else
-				//{
-				//	$(listItemRep).attr("data-repSearch", official[office[i].officialIndices[j]].name + " " + response.normalizedInput.state. + " politician");
-				//}
-				//image and img properties for each representative
-				var img = $("<img>");
-				$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
-				$(img).attr("class", "imgCanidates");
-				$(img).css("max-height", "200px");
-				$(listItemRep).append(img);
-
-				// Div for articles
-				var div = $("<div>").attr("class", "articles"+counter);
-				$(div).attr("class", "art");
-				$(div).html("article "+counter);
-				$(listItemRep).append(div);
-				// Call the getArticles
-				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
-				// Update the counter
-				counter++;
-
-				//span and span properties for each representative's name
-				var span = $("<span>").attr("class", "title repHeader");
-				$(span).append('<br>' + official[office[value.officeIndices[i]].officialIndices[j]].name);
-				$(listItemRep).append(span);
-				
-				if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic")
-				{
-					$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">' + "<br>");
-				}
-				else if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Republican")
-				{
-
-					$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">' + "<br>");
-				}
-
-				// adding font awesome icons to candidate
-				$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
-				$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
-				$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
-
-				$(list).append(listItemRep);
-				//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name);
 			}
 
-		}
+			//for each office in the results
+			for(var i = 0; i<value.officeIndices.length; i++ )
+			{
+				console.log(office[value.officeIndices[i]]);
+				console.log(value.officeIndices[i]);
+				//list item which will contain query response
+				var listItemOffice = $("<li>");
+				//for each itteration set class back to header
+				$(listItemOffice).attr("class", "collection-header officeHeader center");
+				//pushes headers for office names
+				$(listItemOffice).append('<h4>' + office[value.officeIndices[i]].name + '</h4>');
+				$(list).append(listItemOffice);
+				//for each individual who holds that office
+				for(var j = 0; j< office[value.officeIndices[i]].officialIndices.length; j++)
+				{
+					console.log(official[office[value.officeIndices[i]].officialIndices[j]]);
+					console.log(office[value.officeIndices[i]].officialIndices[j]);
+					var listItemRep = $("<li>");
+					//sets list item elements to collection items
+					$(listItemRep).attr("class", "collection-item avatar modal-trigger card-panel hoverable");
+					//enables each item to load larger modal with detailed info
+					$(listItemRep).attr("href", "#modal1");
+					//target data
+					$(listItemRep).attr("data-target", "modal1");
+
+					$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
+					//saves representatives name for wiki search
+					//if()
+					//{
+					$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
+					console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
+					//}
+					//else
+					//{
+					//	$(listItemRep).attr("data-repSearch", official[office[i].officialIndices[j]].name + " " + response.normalizedInput.state. + " politician");
+					//}
+					//image and img properties for each representative
+					var img = $("<img>");
+					$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
+					$(img).attr("class", "imgCanidates");
+					$(img).css("max-height", "200px");
+					$(listItemRep).append(img);
+
+					// Div for articles
+					var div = $("<div>").attr("class", "articles"+counter);
+					$(div).attr("class", "art");
+					$(div).html("article "+counter);
+					$(listItemRep).append(div);
+					// Call the getArticles
+					//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
+					// Update the counter
+					counter++;
+
+					//span and span properties for each representative's name
+					var span = $("<span>").attr("class", "title repHeader");
+					$(span).append('<br>' + official[office[value.officeIndices[i]].officialIndices[j]].name);
+					$(listItemRep).append(span);
+					
+					if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic")
+					{
+						$(listItemRep).append('<img id="demo" src="assets/images/DemocraticLogo.png">' + "<br>");
+					}
+					else if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Republican")
+					{
+
+						$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">' + "<br>");
+					}
+
+					// adding font awesome icons to candidate
+					$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
+					$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
+					$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+
+					$(list).append(listItemRep);
+					//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name);
+				}
+
+			}
+		});
+		//Empty the previously displayed representative info
+		$("#repInfo").empty();
+		//adds entire list to div
+		$("#repInfo").append(list);
+
 	});
-	//Empty the previously displayed representative info
-	$("#repInfo").empty();
-	//adds entire list to div
-	$("#repInfo").append(list);
-});
-
-$('[data-target]').on("click", function() {
-
-	// // Clear the Database
-	// dataRef.remove();
-alert("yoyoyo");
-	/***************** Add Player's Name ****************/
-	var searchPage = $(this).data("repsearch");
-	console.log("searchPage: " + searchPage);
-	if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic") {
-		alert("demo");
-		dataRef.update({
-			"party/democrat": demoCounter
-		})
-
-	} else {
-		alert("rebub");
-		dataRef.update({
-			"party/republican": repubCounter
-		})
-
-	}
-
-});
-
+}
+/*
 function getArticles(candidateName, counter) {
 	console.log("candidateName: "+candidateName);
 	// Split name
@@ -290,4 +293,5 @@ function getArticles(candidateName, counter) {
 		}
 		return false;
 	});
-
+}
+*/
