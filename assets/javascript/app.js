@@ -273,8 +273,10 @@ function getArticles(candidateName, counter) {
 
 	// Richard's API Key
 	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+	// Richard's API Key #2
+	//var apiKey = "521eb14c1a79a7a0b8628e10749f64561251530f";
 	// Alex's API Key
-	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
 	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
