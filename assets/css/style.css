@@ -56,6 +56,10 @@ body {
 	/*float: left;*/
 }
 
+.infobox{
+	float:right;
+	margin:15px;
+}
 
 li {
 	/*font-family: 'Acme', sans-serif;*/
