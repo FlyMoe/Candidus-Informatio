@@ -8,6 +8,12 @@ var controler = {
 	addressValue: null
 };
 
+$(document).ready(function(){
+	$('.parallax').parallax();
+	$(".button-collapse").sideNav();
+});
+
+
 //modal triggers
 
 // Empty the articles div
@@ -259,6 +265,69 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
 	});
 }
+
+dataRef.on("value", function(snapshot) {
+
+var data = snapshot.val();
+demoCounter = data.party_democrat;
+console.log(demoCounter);
+repubCounter = data.party_republican;
+console.log(demoCounter);
+otherCounter = data.party_Other;
+console.log(demoCounter);
+AmCharts.makeChart("chartdiv",
+		{
+			"type": "pie",
+			"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+			"innerRadius": "40%",
+			"colors": [
+				"#0000FF",
+				"#FF0000",
+				"#33FF00",
+				"#FCD202",
+				"#F8FF01",
+				"#B0DE09",
+				"#04D215",
+				"#0D8ECF",
+				"#0D52D1",
+				"#2A0CD0",
+				"#8A0CCF",
+				"#CD0D74",
+				"#754DEB",
+				"#DDDDDD",
+				"#999999",
+				"#333333",
+				"#000000",
+				"#57032A",
+				"#CA9726",
+				"#990000",
+				"#4B0C25"
+			],
+			"titleField": "category",
+			"valueField": "column-1",
+			"theme": "none",
+			"allLabels": [],
+			"balloon": {},
+			"titles": [],
+			"dataProvider": [
+				{
+					"category": "Democratic",
+					"column-1": demoCounter
+				},
+				{
+					"category": "Republican",
+					"column-1": repubCounter
+				},
+				{
+					"category": "Other",
+					"column-1": otherCounter
+				}
+			]
+		}
+	);
+
+
+});
 /*
 function getArticles(candidateName, counter) {
 	console.log("candidateName: "+candidateName);
