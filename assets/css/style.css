@@ -48,6 +48,15 @@ body {
 	font-family: 'Oleo Script', cursive;
 }
 
+
+.art {
+	float: right;
+}
+.imgCanidates {
+	/*float: left;*/
+}
+
+
 li {
 	/*font-family: 'Acme', sans-serif;*/
 	/*font-family: 'Abril Fatface', cursive;*/
@@ -78,6 +87,8 @@ li {
 	font-family: 'Montserrat', sans-serif;
 }
 
+<<<<<<< HEAD
+=======
 
 /*chart stuff*/
 
@@ -98,3 +109,4 @@ li {
     padding: 20px;
     margin: 0;
 }
+>>>>>>> alex_working

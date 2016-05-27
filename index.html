@@ -1,5 +1,5 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -8,13 +8,13 @@
 	<!-- Compiled and minified CSS -->
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
 
+
 	<link href='https://fonts.googleapis.com/css?family=Acme|Abril+Fatface|Oleo+Script:400,700|Montserrat:400,700|Timmana' rel='stylesheet' type='text/css'>	
+
   	
+
   	<!-- font awesome -->
   	<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css" type="text/css">
-
-	<!-- reset css src -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
 	<!-- reset css src -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -32,6 +32,7 @@
 
  	<!-- ****** FireBase Src Link ****** -->
 	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+
 
 		<!-- amCharts custom font -->
 		<!-- <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'> -->
@@ -61,13 +62,13 @@
 					<li><a class="page-scroll" href="#main-input">Search</a></li>
 					<li><a href="about.html">About</a></li>
 					<li><a href="contactus.html">Contact Us</a></li>
-				</ul>				
+				</ul>
 		</div>
 	</div>
 </nav>
 
 
-<div id="parallax1" class="parallax-container">
+<div class="parallax-container">
 	<div class="parallax"><img src="assets/images/capitol-building1.jpg"></div>
 </div>
 
@@ -79,7 +80,7 @@
 					<input placeholder="address..." id="addressInput" type="text" class="validate" x-webkit-speech>
 					<label for="address-input"></label>
 					<!-- Modal Trigger from materialize example -->
-					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2" href="#modal2">Search</a>
+					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
 				</div>
 
 				<div id="sidebar" class="col s6">
@@ -96,18 +97,19 @@
 		<!-- Tabs for search results -->
 		<div class="col s12">
       		<ul class="tabs">
-		        <li class="tab col s3"><a href="#test1">All</a></li>
-		        <li class="tab col s3"><a href="#test2">Federal</a></li>
-		        <li class="tab col s3"><a href="#test3">State</a></li>
-		        <li class="tab col s3"><a href="#test4">County</a></li>
+		        <li class="tab col s3" data-filter="all"><a href="#test1">All</a></li>
+		        <li class="tab col s3" data-filter="federal"><a href="#test2">Federal</a></li>
+		        <li class="tab col s3" data-filter="state"><a href="#test3">State</a></li>
+		        <li class="tab col s3" data-filter="local"><a href="#test4">Local</a></li>
      		 </ul>
     	</div>
 		<div class="col s12">
-			<div id="repInfo">
-			</div>
+			<div id="repInfo"></div>
+			<div id="articles"> </div>
 		</div>
 	</div>
 </div>
+
 
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal modalLG">
@@ -117,7 +119,6 @@
 					<div class ="col l12">
 						<div id="wikiInfo"> </div>
 						<div id="removeEnd"></div>
-						<div id="articles"> </div>
 					</div>
 				</div>
 			</div>	
@@ -147,11 +148,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 <!-- javascript src -->
- <script type="text/javascript" src="assets/javascript/app.js"></script>
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+
+<!-- javascript firebase src -->
+<script type="text/javascript" src="assets/javascript/firebase.js"></script>
 
 <script>
 	$(document).ready(function(){
 		$('.parallax').parallax();
+
 		$(".button-collapse").sideNav();
 		AmCharts.makeChart("chartdiv",
 				{
@@ -203,14 +208,14 @@
 					]
 				}
 			);
+	});
 
-});
 
 </script>
 
 
 <!-- added footer with red color -->
-<footer id="red-footer" class="page-footer red darken-2">
+<footer class="page-footer red darken-2">
 	<div class="container">
 		<div class="footer-copyright">
 			Copyright &copy; 2016 Candidus-Informatio.com | All rights reserved.
