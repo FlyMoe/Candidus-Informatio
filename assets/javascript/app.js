@@ -292,3 +292,4 @@ function getArticles(candidateName, counter) {
 
 	return false;
 }
+

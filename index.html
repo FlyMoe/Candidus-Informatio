@@ -11,14 +11,10 @@
 
 	<link href='https://fonts.googleapis.com/css?family=Acme|Abril+Fatface|Oleo+Script:400,700|Montserrat:400,700|Timmana' rel='stylesheet' type='text/css'>	
 
+  	
+
   	<!-- font awesome -->
   	<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css" type="text/css">
-
-	<!-- reset css src -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-
-	<!-- reset css src -->
-	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 
 	<!-- reset css src -->
 	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
@@ -36,6 +32,15 @@
 
  	<!-- ****** FireBase Src Link ****** -->
 	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+
+
+		<!-- amCharts custom font -->
+		<!-- <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'> -->
+
+		<!-- amCharts javascript sources -->
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/chalk.js"></script>
 
 
 </head>
@@ -72,11 +77,19 @@
 		<form class="col s12">
 			<div class="row">
 				<div class="input-field col s6 transparent">
-					<input placeholder="address..." id="addressInput" type="text" class="validate">
+					<input placeholder="address..." id="addressInput" type="text" class="validate" x-webkit-speech>
 					<label for="address-input"></label>
 					<!-- Modal Trigger from materialize example -->
 					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
 				</div>
+
+				<div id="sidebar" class="col s6">
+    				<h2><img id="demo" src="assets/images/DemocraticLogo.png"> vs <img id="rep" src="assets/images/republicanlogo.jpg"></h2>
+    				<div id="chartwrapper">
+        				<div id="chartdiv" style="width: 475px; height: 300px;" ></div>
+    				</div>
+				</div>
+
 			</div>
 		</form>
 	</div>
@@ -143,7 +156,62 @@
 <script>
 	$(document).ready(function(){
 		$('.parallax').parallax();
+
 	});
+
+		$(".button-collapse").sideNav();
+		AmCharts.makeChart("chartdiv",
+				{
+					"type": "pie",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"innerRadius": "40%",
+					"colors": [
+						"#0000FF",
+						"#FF0000",
+						"#33FF00",
+						"#FCD202",
+						"#F8FF01",
+						"#B0DE09",
+						"#04D215",
+						"#0D8ECF",
+						"#0D52D1",
+						"#2A0CD0",
+						"#8A0CCF",
+						"#CD0D74",
+						"#754DEB",
+						"#DDDDDD",
+						"#999999",
+						"#333333",
+						"#000000",
+						"#57032A",
+						"#CA9726",
+						"#990000",
+						"#4B0C25"
+					],
+					"titleField": "category",
+					"valueField": "column-1",
+					"theme": "none",
+					"allLabels": [],
+					"balloon": {},
+					"titles": [],
+					"dataProvider": [
+						{
+							"category": "Democratic",
+							"column-1": 8
+						},
+						{
+							"category": "Republican",
+							"column-1": 6
+						},
+						{
+							"category": "Other",
+							"column-1": 2
+						}
+					]
+				}
+			);
+
+
 </script>
 
 
