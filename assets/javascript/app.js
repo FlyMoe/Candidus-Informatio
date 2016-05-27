@@ -329,6 +329,34 @@ AmCharts.makeChart("chartdiv",
 
 });
 
+// This function is for the voice recognition
+function startDictation() {
+ 
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+ 
+      var recognition = new webkitSpeechRecognition();
+ 
+      recognition.continuous = false;
+      recognition.interimResults = false;
+ 
+      recognition.lang = "en-US";
+      recognition.start();
+ 
+      recognition.onresult = function(e) {
+        document.getElementById('addressInput').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+       //document.getElementById('labnol').submit();
+      };
+ 
+      recognition.onerror = function(e) {
+      	console.log(e);
+        recognition.stop();
+      }
+ 
+    }
+}
+
 function getArticles(candidateName, counter) {
 	/*
 	console.log("candidateName: "+candidateName);

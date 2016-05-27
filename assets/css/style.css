@@ -95,8 +95,7 @@ li {
 {
 	margin-top: 150px;
 }
-<<<<<<< HEAD
-=======
+
 
 /*chart stuff*/
 
@@ -108,7 +107,7 @@ li {
     margin-left: 30px;
 }
 #sidebar h2 {
-    font-size: 18px;
+    font-size: 18px;recognition
     text-align: center;
     border-bottom: 2px solid #fff;
     padding: 10px;
@@ -117,4 +116,8 @@ li {
     padding: 20px;
     margin: 0;
 }
->>>>>>> alex_working
+
+/* voice recognition */
+.speech input {border: 0; width: 370px; display: inline-block; height: 30px;}
+.speech img {float: right; width: 40px }
+

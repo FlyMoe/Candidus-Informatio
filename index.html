@@ -74,11 +74,12 @@
 
 <div id="main-input" class="container">
 	<div class="row">
-		<form class="col s12">
+		<form id="labnol" class="col s12" method="get">
 			<div class="row">
-				<div class="input-field col s6 transparent" id="submitDiv">
-					<input placeholder="address..." id="addressInput" type="text" class="validate" x-webkit-speech>
+				<div class="speech input-field col s6 transparent" id="submitDiv">
+					<input name="q" placeholder="address..." id="addressInput" type="text" class="validate" x-webkit-speech>
 					<label for="address-input"></label>
+					<i onclick="startDictation()" class="fa fa-microphone" aria-hidden="true"></i>
 					<!-- Modal Trigger from materialize example -->
 					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
 				</div>
