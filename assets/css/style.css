@@ -52,12 +52,8 @@ body {
 .art {
 	float: right;
 }
-.imgCanidates {
-	/*float: left;*/
-}
 
-
-li {
+.navItems {
 	/*font-family: 'Acme', sans-serif;*/
 	/*font-family: 'Abril Fatface', cursive;*/
 	/*font-family: 'Oleo Script', cursive;*/
@@ -79,8 +75,7 @@ li {
 }
 
 #bar {
-	height: 38px;
-
+	height: 45px;
 }
 
 #submitAddress {
@@ -107,13 +102,17 @@ li {
 	font-family: 'Montserrat', sans-serif;
 }
 
+.tabs {
+	font-family: 'Montserrat', sans-serif;
+}
+
 
 /*chart stuff*/
 
 }
 #sidebar {
     width: 100px;
-    background: #eee;
+    background: gray;
     float: right;
     margin-left: 30px;
 }
@@ -126,5 +125,18 @@ li {
 #sidebar p {
     padding: 20px;
     margin: 0;
+}
+
+
+@media screen and (max-width: 320px) { /* for screen size less or equal to 320px*/
+     h3{
+        font-size: 60%; /*Changes as per your requirement*/
+     }    
+}
+
+@media screen and (max-width: 320px) { /* for screen size less or equal to 320px*/
+     #para1 {
+        position: absolute;
+     }    
 }
 

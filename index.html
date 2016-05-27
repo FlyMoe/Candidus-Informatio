@@ -50,18 +50,11 @@
 	<div class="container">
 		<div class="nav-wrapper">
 			<a href="index.html" class="brand-logo">Candidus-Informatio</a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="index.html">Home</a></li>
-					<li><a class="page-scroll" href="#main-input">Search</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contactus.html">Contact Us</a></li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li><a href="index.html">Home</a></li>
-					<li><a class="page-scroll" href="#main-input">Search</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contactus.html">Contact Us</a></li>
+				<ul class="right">
+					<li class="navItems"><a href="index.html">Home</a></li>
+					<li class="navItems"><a class="page-scroll" href="#main-input">Search</a></li>
+					<li class="navItems"><a href="about.html">About</a></li>
+					<li class="navItems"><a href="contactus.html">Contact Us</a></li>
 				</ul>
 		</div>
 	</div>
@@ -69,7 +62,7 @@
 
 
 <div class="parallax-container">
-	<div class="parallax"><img src="assets/images/capitol-building1.jpg"></div>
+	<div class="parallax"><img class="responsive-img" src="assets/images/capitol-building1.jpg"></div>
 </div>
 
 <div id="main-input" class="container">
@@ -77,7 +70,7 @@
 		<form class="col s12">
 			<div class="row">
 				<div class="input-field col s6 transparent">
-					<input placeholder="address..." id="addressInput" type="text" class="validate" x-webkit-speech>
+					<input placeholder="address..." id="addressInput" type="text" class="validate">
 					<label for="address-input"></label>
 					<!-- Modal Trigger from materialize example -->
 					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
@@ -138,7 +131,7 @@
 
 <div class="parallax-container">
 	<div class="parallax"><img src="assets/images/capitol-building3.jpg"></div>
-</div><!-- div for parallax -->
+</div>
 
 
 <!--Import jQuery before materialize.js-->

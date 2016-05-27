@@ -262,39 +262,39 @@ function getCivicData(filter)
 
 });
 
-function getArticles(candidateName, counter) 
-{
-	console.log("candidateName: "+candidateName);
-	// Split name
-	var candidateNameArray = candidateName.split(" ");
-	var firstName = candidateNameArray[0];
-	var lastName = candidateNameArray[1];
+// function getArticles(candidateName, counter) 
+// {
+// 	console.log("candidateName: "+candidateName);
+// 	// Split name
+// 	var candidateNameArray = candidateName.split(" ");
+// 	var firstName = candidateNameArray[0];
+// 	var lastName = candidateNameArray[1];
 
-	// Number of days to go back in time to get the articles
-	var days = 3;
+// 	// Number of days to go back in time to get the articles
+// 	var days = 3;
 
-	// Richard's API Key
-	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
-	// Alex's API Key
-	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
-	// Jonathan's API Key
-	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
+// 	// Richard's API Key
+// 	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+// 	// Alex's API Key
+// 	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+// 	// Jonathan's API Key
+// 	// var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
-	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
+// 	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
-	$.ajax({
-	        url: queryURL,
-	        method: 'GET'
-	    })           
-	.done(function(response) {
-		 console.log(response);  	    
-		for (var i = 0; i < response.result.docs.length; i++) {
-			var url = response.result.docs[i].source.enriched.url.url;
-	        var title = response.result.docs[i].source.enriched.url.title;
-            var hostname = $('<a>').prop('href', url).prop('hostname');
-	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
-		}
-		return false;
-	});
-}
+// 	$.ajax({
+// 	        url: queryURL,
+// 	        method: 'GET'
+// 	    })           
+// 	.done(function(response) {
+// 		 console.log(response);  	    
+// 		for (var i = 0; i < response.result.docs.length; i++) {
+// 			var url = response.result.docs[i].source.enriched.url.url;
+// 	        var title = response.result.docs[i].source.enriched.url.title;
+//             var hostname = $('<a>').prop('href', url).prop('hostname');
+// 	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+// 		}
+// 		return false;
+// 	});
+// }
 
