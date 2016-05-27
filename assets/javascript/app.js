@@ -27,34 +27,34 @@ var dataRef = new Firebase(url);
 var demoCounter = 1;
 var repubCounter = 1;
 
-$(document).on('click','.modal-trigger',function(){
+$(document).on('click','.modal-trigger', function(){
 
 
 	if($(this).data("target") == "modal1")
 	{
 		var searchPage = $(this).data("repsearch");
 		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
-			console.log(json);
-    	var printDiv = $('<div>').html(json.parse.text['*']); 
-    	$(printDiv).find('img').attr("src", function(){
-    			var src = $(this).attr("src");
-    			return ('https:' + src);
-    	});
-    	$(printDiv).find('a').replaceWith(function(){
-    			var text = $(this).text();
-    			return text;
-    	});
+			//console.log(json);
+	    	var printDiv = $('<div>').html(json.parse.text['*']); 
+	    	$(printDiv).find('img').attr("src", function(){
+	    			var src = $(this).attr("src");
+	    			return ('https:' + src);
+	    	});
+	    	$(printDiv).find('a').replaceWith(function(){
+	    			var text = $(this).text();
+	    			return text;
+	    	});
 
-    	
-    	$(printDiv).find(".hatnote").remove();
-    	$(printDiv).find(".reference").remove();
-    	$(printDiv).find(".nowrap").remove();
-    	$(printDiv).find(".vertical-navbox").remove();
-    	$(printDiv).find(".noprint").remove();
-    	$("#wikiInfo").html(printDiv);
-    	$("div[id*='toc']").nextUntil(removeEnd).remove();
-    	$('#modal1').openModal();
-  });
+	    	$(printDiv).find(".hatnote").remove();
+	    	$(printDiv).find(".reference").remove();
+	    	$(printDiv).find(".nowrap").remove();
+	    	$(printDiv).find(".vertical-navbox").remove();
+	    	$(printDiv).find(".noprint").remove();
+	    	$("#wikiInfo").html(printDiv);
+	    	$("div[id*='toc']").nextUntil(removeEnd).remove();
+	    	$('#modal1').openModal();
+
+		  });
 	}
 
 	//if the #submitAddress modal is hit get address to be confirmed by user
@@ -112,10 +112,10 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	//list and list item which will contain query response
 	list = $("<ul>").attr("class", "collection with-header");
 	var listItemHeader = $("<li>");
-	console.log(response);
+	//console.log(response);
 	//Shortcut variables assigned so that data calls are truncated
 	var division = response.divisions;
-	console.log(division);
+	//console.log(division);
 	var office = response.offices;
 	var official = response.officials;
 	//Main header for list
@@ -125,8 +125,8 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	//for each division in the results
 	$.each(division, function(key,value)
 	{
-		console.log(key);
-		console.log(value);
+		//console.log(key);
+		//console.log(value);
 
 		if(filter == "federal")
 		{
@@ -145,14 +145,14 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 		}
 		else
 		{
-
+			
 		}
 
 		//for each office in the results
 		for(var i = 0; i<value.officeIndices.length; i++ )
 		{
-			console.log(office[value.officeIndices[i]]);
-			console.log(value.officeIndices[i]);
+			//console.log(office[value.officeIndices[i]]);
+			//console.log(value.officeIndices[i]);
 			//list item which will contain query response
 			var listItemOffice = $("<li>");
 			//for each itteration set class back to header
@@ -163,8 +163,8 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 			//for each individual who holds that office
 			for(var j = 0; j< office[value.officeIndices[i]].officialIndices.length; j++)
 			{
-				console.log(official[office[value.officeIndices[i]].officialIndices[j]]);
-				console.log(office[value.officeIndices[i]].officialIndices[j]);
+				//console.log(official[office[value.officeIndices[i]].officialIndices[j]]);
+				//console.log(office[value.officeIndices[i]].officialIndices[j]);
 				var listItemRep = $("<li>");
 				//sets list item elements to collection items
 				$(listItemRep).attr("class", "collection-item avatar modal-trigger card-panel hoverable");
@@ -178,7 +178,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				//if()
 				//{
 				$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
-				console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
+				//console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
 				//}
 				//else
 				//{
@@ -192,9 +192,12 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 				$(listItemRep).append(img);
 
 				// Div for articles
-				var div = $("<div>").attr("class", "articles"+counter);
-				$(div).attr("class", "art");
-				$(div).html("article "+counter);
+				var div = $("<div>");
+				$(div).addClass("articles"+counter);
+				$(div).addClass("art");
+				//$(div).attr("class", "articles"+counter);
+				//$(div).attr("class", "art");
+				//$(div).html("article "+counter);
 				$(listItemRep).append(div);
 				// Call the getArticles
 				getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
@@ -232,15 +235,16 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 	//adds entire list to div
 	$("#repInfo").append(list);
 });
+}
 
 $('[data-target]').on("click", function() {
 
 	// // Clear the Database
 	// dataRef.remove();
-alert("yoyoyo");
+//alert("yoyoyo");
 	/***************** Add Player's Name ****************/
 	var searchPage = $(this).data("repsearch");
-	console.log("searchPage: " + searchPage);
+	// console.log("searchPage: " + searchPage);
 	if ((official[office[value.officeIndices[i]].officialIndices[j]].party) == "Democratic") {
 		alert("demo");
 		dataRef.update({
@@ -258,7 +262,7 @@ alert("yoyoyo");
 });
 
 function getArticles(candidateName, counter) {
-	console.log("candidateName: "+candidateName);
+	
 	// Split name
 	var candidateNameArray = candidateName.split(" ");
 	var firstName = candidateNameArray[0];
@@ -270,9 +274,9 @@ function getArticles(candidateName, counter) {
 	// Richard's API Key
 	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
 	// Alex's API Key
-	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
-	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
+	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
 	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
@@ -283,10 +287,17 @@ function getArticles(candidateName, counter) {
 	.done(function(response) {
 		 console.log(response);  	    
 		for (var i = 0; i < response.result.docs.length; i++) {
-			var url = response.result.docs[i].source.enriched.url.url;
+			var url = response.result.docs[i].source.enriched.url.url;			
 	        var title = response.result.docs[i].source.enriched.url.title;
             var hostname = $('<a>').prop('href', url).prop('hostname');
-	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+
+	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>"); 
+			console.log("candidateName: "+candidateName);                     
+	        console.log("counter: "+counter);
+	        console.log("url: "+url);
+	        console.log("title: "+title);
+	        console.log("hostname: "+hostname);
+	        console.log("--------------");
 		}
 	});
 

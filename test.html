@@ -1,0 +1,113 @@
+
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Candidus-Informatio</title>
+	<!-- Compiled and minified CSS -->
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+
+	<link href='https://fonts.googleapis.com/css?family=Acme|Abril+Fatface|Oleo+Script:400,700|Montserrat:400,700|Timmana' rel='stylesheet' type='text/css'>	
+
+  	<!-- font awesome -->
+  	<link rel="stylesheet" href="font-awesome-4.6.3/css/font-awesome.min.css" type="text/css">
+
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<!-- reset css src -->
+	<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+	<!-- materialize cdn -->
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css"> -->
+
+	<!-- material+icons -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!-- style css src -->
+ 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+ 	<!-- jquery cdn -->
+ 	<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+ 	<!-- ****** FireBase Src Link ****** -->
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+
+
+	<style>
+	    .speech {border: 1px solid #DDD; width: 300px; padding: 0; margin: 0}
+  		.speech input {border: 0; width: 240px; display: inline-block; height: 30px;}
+   		.speech img {float: right; width: 40px }
+	</style>
+
+</head>
+<body>
+
+<div id="main-input" class="container">
+	<!-- <div class="row">
+		<form class="col s12">
+			<div class="row">
+				<div class="input-field col s6 transparent">
+					<input placeholder="address..." id="addressInput" type="text" class="validate">
+					<label for="address-input"></label> -->
+					<!-- Modal Trigger from materialize example -->
+		<!-- 			<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
+				</div>
+			</div>
+		</form> -->
+		<form id="labnol" method="get" action="https://www.google.com/search">
+		  <div class="speech">
+		    <input type="text" name="q" id="transcript" placeholder="Speak" />
+		    <img onclick="startDictation()" src="https://i.imgur.com/cHidSVu.gif" />
+		  </div>
+		</form>
+	</div>
+</div>
+
+<script>
+  function startDictation() {
+ 
+    if (window.hasOwnProperty('webkitSpeechRecognition')) {
+ 
+      var recognition = new webkitSpeechRecognition();
+ 
+      recognition.continuous = false;
+      recognition.interimResults = false;
+ 
+      recognition.lang = "en-US";
+      recognition.start();
+ 
+      recognition.onresult = function(e) {
+        document.getElementById('transcript').value
+                                 = e.results[0][0].transcript;
+        recognition.stop();
+        document.getElementById('labnol').submit();
+      };
+ 
+      recognition.onerror = function(e) {
+      	console.log(e);
+        recognition.stop();
+      }
+ 
+    }
+  }
+</script>
+
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+<!-- Compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
+<!-- javascript src -->
+<script type="text/javascript" src="assets/javascript/app.js"></script>
+
+<!-- javascript firebase src -->
+<script type="text/javascript" src="assets/javascript/firebase.js"></script>
+
+</body>
+</html>
