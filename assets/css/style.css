@@ -87,8 +87,26 @@ li {
 	font-family: 'Montserrat', sans-serif;
 }
 
-<<<<<<< HEAD
-=======
+.jonImage {
+	width: 100px;
+	height: 100px;
+}
+
+.richImage {
+	width: 100px;
+	height: 100px;
+}
+
+.alexImage {
+	width: 100px;
+	height: 100px;
+}
+
+.contactName {
+	color: #1976d2;
+	font-family: 'Montserrat', sans-serif;
+}
+
 
 /*chart stuff*/
 
@@ -109,4 +127,4 @@ li {
     padding: 20px;
     margin: 0;
 }
->>>>>>> alex_working
+
