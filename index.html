@@ -33,9 +33,13 @@
  	<!-- ****** FireBase Src Link ****** -->
 	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 
-	<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
-	<script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
-	<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/none.js"></script>
+		<!-- amCharts custom font -->
+		<!-- <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'> -->
+
+		<!-- amCharts javascript sources -->
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/chalk.js"></script>
 
 
 </head>
@@ -81,7 +85,7 @@
 				<div id="sidebar" class="col s6">
     				<h2><img id="demo" src="assets/images/DemocraticLogo.png"> vs <img id="rep" src="assets/images/republicanlogo.jpg"></h2>
     				<div id="chartwrapper">
-        				<div id="chartdiv"></div>
+        				<div id="chartdiv" style="width: 475px; height: 300px;" ></div>
     				</div>
 				</div>
 
@@ -144,6 +148,65 @@
 
 <!-- javascript src -->
  <script type="text/javascript" src="assets/javascript/app.js"></script>
+
+<script>
+	$(document).ready(function(){
+		$('.parallax').parallax();
+		$(".button-collapse").sideNav();
+		AmCharts.makeChart("chartdiv",
+				{
+					"type": "pie",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"innerRadius": "40%",
+					"colors": [
+						"#0000FF",
+						"#FF0000",
+						"#33FF00",
+						"#FCD202",
+						"#F8FF01",
+						"#B0DE09",
+						"#04D215",
+						"#0D8ECF",
+						"#0D52D1",
+						"#2A0CD0",
+						"#8A0CCF",
+						"#CD0D74",
+						"#754DEB",
+						"#DDDDDD",
+						"#999999",
+						"#333333",
+						"#000000",
+						"#57032A",
+						"#CA9726",
+						"#990000",
+						"#4B0C25"
+					],
+					"titleField": "category",
+					"valueField": "column-1",
+					"theme": "none",
+					"allLabels": [],
+					"balloon": {},
+					"titles": [],
+					"dataProvider": [
+						{
+							"category": "Democratic",
+							"column-1": 8
+						},
+						{
+							"category": "Republican",
+							"column-1": 6
+						},
+						{
+							"category": "Other",
+							"column-1": 2
+						}
+					]
+				}
+			);
+
+});
+
+</script>
 
 
 <!-- added footer with red color -->

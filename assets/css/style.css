@@ -98,24 +98,3 @@ li {
     padding: 20px;
     margin: 0;
 }
-#chartwrapper {
-    position: relative;
-	width		: 200px;
-	height		: 200px;
-    background: #fff;
-	/*border: 1px dotted #c00;*/
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}
-#chartdiv {
-    position: absolute;
-    top: 5px;
-    left: 95px;
-	width		: 260px;
-	height		: 260px;
-	/*border: 1px dotted #0c0;*/
-    -webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
-}

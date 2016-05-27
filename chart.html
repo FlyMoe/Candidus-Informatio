@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>chart created with amCharts | amCharts</title>
+		<meta name="description" content="chart created using amCharts live editor" />
+
+		<!-- amCharts custom font -->
+		<link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
+
+		<!-- amCharts javascript sources -->
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
+		<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/chalk.js"></script>
+
+		<!-- amCharts javascript code -->
+		<script type="text/javascript">
+			AmCharts.makeChart("chartdiv",
+				{
+					"type": "pie",
+					"balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+					"innerRadius": "40%",
+					"colors": [
+						"#0000FF",
+						"#FF0000",
+						"#33FF00",
+						"#FCD202",
+						"#F8FF01",
+						"#B0DE09",
+						"#04D215",
+						"#0D8ECF",
+						"#0D52D1",
+						"#2A0CD0",
+						"#8A0CCF",
+						"#CD0D74",
+						"#754DEB",
+						"#DDDDDD",
+						"#999999",
+						"#333333",
+						"#000000",
+						"#57032A",
+						"#CA9726",
+						"#990000",
+						"#4B0C25"
+					],
+					"titleField": "category",
+					"valueField": "column-1",
+					"theme": "chalk",
+					"allLabels": [],
+					"balloon": {},
+					"titles": [],
+					"dataProvider": [
+						{
+							"category": "Democratic",
+							"column-1": 8
+						},
+						{
+							"category": "Republican",
+							"column-1": 6
+						},
+						{
+							"category": "Other",
+							"column-1": 2
+						}
+					]
+				}
+			);
+		</script>
+	</head>
+	<body>
+		<div id="chartdiv" style="width: 475px; height: 300px; background-color: #282828;" ></div>
+	</body>
+</html>
