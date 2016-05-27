@@ -328,8 +328,9 @@ AmCharts.makeChart("chartdiv",
 
 
 });
-/*
+
 function getArticles(candidateName, counter) {
+	/*
 	console.log("candidateName: "+candidateName);
 	// Split name
 	var candidateNameArray = candidateName.split(" ");
@@ -362,5 +363,9 @@ function getArticles(candidateName, counter) {
 		}
 		return false;
 	});
+	*/
+
+	//test stuff
+	var candidateDiv = $(".articles"+counter).append("<p><a href='#' target=\"_blank\">"+title+"</a></p>");
+	return false;
 }
-*/
