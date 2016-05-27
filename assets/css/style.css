@@ -106,6 +106,14 @@ body {
 	font-family: 'Montserrat', sans-serif;
 }
 
+#demo5 {
+	width: 60px;
+}
+
+#rep5 {
+	width: 70px;
+}
+
 
 /*chart stuff*/
 
@@ -127,16 +135,15 @@ body {
     margin: 0;
 }
 
+#chartdiv {
+	width: 475px;
+	height: 300px;
+}
+
 
 @media screen and (max-width: 320px) { /* for screen size less or equal to 320px*/
      h3{
         font-size: 60%; /*Changes as per your requirement*/
-     }    
-}
-
-@media screen and (max-width: 320px) { /* for screen size less or equal to 320px*/
-     #para1 {
-        position: absolute;
      }    
 }
 
