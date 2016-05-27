@@ -288,8 +288,6 @@ function getArticles(candidateName, counter) {
             var hostname = $('<a>').prop('href', url).prop('hostname');
 	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
 		}
+		return false;
 	});
-
-	return false;
-}
 
