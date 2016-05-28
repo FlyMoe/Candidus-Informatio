@@ -25,7 +25,7 @@ $("div.articles").empty();
 
 
 var counter = 0;
-var url ='https://intense-inferno-5888.firebaseio.com/'
+var url ='https://intense-heat-9862.firebaseio.com/';
 var dataRef = new Firebase(url);
 var demoCounter = 1;
 var repubCounter = 1;
