@@ -49,12 +49,28 @@ body {
 }
 
 
-.art {
-	float: right;
+.collection-item .art {
+	margin:25px;
+}
+
+
+.art .modal-trigger {
+	margin: 15px;
+}
+
+.art .articleA
+{
+	color:#1976D2;
+}
+
+.art .articleA:hover
+{
+	color:#D32F2F;
 }
 
 .imgCanidates {
-	/*float: left;*/
+	float: left;
+	margin-right: 50px;
 }
 
 .infobox{

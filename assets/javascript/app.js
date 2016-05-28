@@ -200,15 +200,9 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					console.log(office[value.officeIndices[i]].officialIndices[j]);
 					var listItemRep = $("<li>");
 					//sets list item elements to collection items
-					$(listItemRep).attr("class", "collection-item avatar modal-trigger card-panel hoverable");
-					//enables each item to load larger modal with detailed info
-					$(listItemRep).attr("href", "#modal1");
-					//target data
-					$(listItemRep).attr("data-target", "modal1");
+					$(listItemRep).attr("class", "collection-item avatar card-panel hoverable");
+					//target part
 					$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
-					//saves representatives name for wiki search
-					$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
-					console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
 					//image and img properties for each representative
 					var img = $("<img>");
 					$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
@@ -217,14 +211,8 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					$(listItemRep).append(img);
 
 					// Div for articles
-					var div = $("<div>").attr("class", "articles"+counter);
-					$(div).attr("class", "art");
-					$(div).html("article "+counter);
+					var div = $("<div>").attr("class", "articles"+counter + " art");
 					$(listItemRep).append(div);
-					// Call the getArticles
-					//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
-					// Update the counter
-					counter++;
 
 					//span and span properties for each representative's name
 					var span = $("<span>").attr("class", "title repHeader");
@@ -247,6 +235,10 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
 
 					$(list).append(listItemRep);
+					// Call the getArticles
+					getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
+					// Update the counter
+					counter++;
 				}
 			}
 		});
@@ -346,7 +338,7 @@ function startDictation() {
  
     }
 }
-/*
+
 function getArticles(candidateName, counter) {
 	console.log("candidateName: "+candidateName);
 	// Split name
@@ -376,9 +368,9 @@ function getArticles(candidateName, counter) {
 			var url = response.result.docs[i].source.enriched.url.url;
 	        var title = response.result.docs[i].source.enriched.url.title;
             var hostname = $('<a>').prop('href', url).prop('hostname');
-	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+	        $(".articles"+counter).append("<p><a href='"+url+"' class='articleA' target=\"_blank\">"+title+"</a></p>");              
 		}
+		$(".articles"+counter).append('<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" href="#modal1" data-repsearch="'+ candidateName +'" data-target="modal1">More Info</a>');
 		return false;
 	});
 }
-*/
