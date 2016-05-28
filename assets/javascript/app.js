@@ -198,23 +198,9 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					console.log(office[value.officeIndices[i]].officialIndices[j]);
 					var listItemRep = $("<li>");
 					//sets list item elements to collection items
-					$(listItemRep).attr("class", "collection-item avatar modal-trigger card-panel hoverable");
-					//enables each item to load larger modal with detailed info
-					$(listItemRep).attr("href", "#modal1");
-					//target data
-					$(listItemRep).attr("data-target", "modal1");
-
+					$(listItemRep).attr("class", "collection-item avatar card-panel hoverable");
+					//target part
 					$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
-					//saves representatives name for wiki search
-					//if()
-					//{
-					$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
-					console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
-					//}
-					//else
-					//{
-					//	$(listItemRep).attr("data-repSearch", official[office[i].officialIndices[j]].name + " " + response.normalizedInput.state. + " politician");
-					//}
 					//image and img properties for each representative
 					var img = $("<img>");
 					$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
@@ -225,7 +211,11 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					// Div for articles
 					var div = $("<div>").attr("class", "articles"+counter);
 					$(div).attr("class", "art");
-					$(div).html("article "+counter);
+					for (var x = 0; x < 5; x++) 
+					{
+						$(div).append("<p><a href='#' class='articleA' target=\"_blank\">Lorem ipsum dolor sit amet, consectetur adipiscing elit</a></p>");
+					}
+					$(div).append('<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" href="#modal1" data-repsearch="'+ official[office[value.officeIndices[i]].officialIndices[j]].name +'" data-target="modal1">More Info</a>');
 					$(listItemRep).append(div);
 					// Call the getArticles
 					//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
@@ -328,9 +318,8 @@ AmCharts.makeChart("chartdiv",
 
 
 });
-
+/*
 function getArticles(candidateName, counter) {
-	/*
 	console.log("candidateName: "+candidateName);
 	// Split name
 	var candidateNameArray = candidateName.split(" ");
@@ -363,9 +352,5 @@ function getArticles(candidateName, counter) {
 		}
 		return false;
 	});
-	*/
-
-	//test stuff
-	var candidateDiv = $(".articles"+counter).append("<p><a href='#' target=\"_blank\">"+title+"</a></p>");
-	return false;
 }
+*/
