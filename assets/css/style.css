@@ -52,6 +52,7 @@ body {
 .art {
 	float: right;
 }
+
 .imgCanidates {
 	/*float: left;*/
 }
@@ -61,7 +62,7 @@ body {
 	margin:15px;
 }
 
-li {
+.navItems {
 	/*font-family: 'Acme', sans-serif;*/
 	/*font-family: 'Abril Fatface', cursive;*/
 	/*font-family: 'Oleo Script', cursive;*/
@@ -83,17 +84,49 @@ li {
 }
 
 #bar {
-	height: 38px;
-
+	height: 45px;
 }
 
 #submitAddress {
 	font-family: 'Montserrat', sans-serif;
 }
 
+
 #submitDiv
 {
 	margin-top: 150px;
+}
+
+.jonImage {
+	width: 100px;
+	height: 100px;
+}
+
+.richImage {
+	width: 100px;
+	height: 100px;
+}
+
+.alexImage {
+	width: 100px;
+	height: 100px;
+}
+
+.contactName {
+	color: #1976d2;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.tabs {
+	font-family: 'Montserrat', sans-serif;
+}
+
+#demo5 {
+	width: 60px;
+}
+
+#rep5 {
+	width: 70px;
 }
 
 
@@ -102,12 +135,12 @@ li {
 }
 #sidebar {
     width: 100px;
-    background: #eee;
+    background: gray;
     float: right;
     margin-left: 30px;
 }
 #sidebar h2 {
-    font-size: 18px;recognition
+    font-size: 18px;
     text-align: center;
     border-bottom: 2px solid #fff;
     padding: 10px;
@@ -120,4 +153,16 @@ li {
 /* voice recognition */
 .speech input {border: 0; width: 370px; display: inline-block; height: 30px;}
 .speech img {float: right; width: 40px }
+
+#chartdiv {
+	width: 475px;
+	height: 300px;
+}
+
+
+@media screen and (max-width: 320px) { /* for screen size less or equal to 320px*/
+     h3{
+        font-size: 60%; /*Changes as per your requirement*/
+     }    
+}
 

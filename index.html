@@ -34,44 +34,33 @@
 	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 
 
-		<!-- amCharts custom font -->
-		<!-- <link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'> -->
+	<!-- amCharts custom font -->
+	<link href='http://fonts.googleapis.com/css?family=Covered+By+Your+Grace' rel='stylesheet' type='text/css'>
 
-		<!-- amCharts javascript sources -->
-		<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
-		<script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
-		<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/chalk.js"></script>
+	<!-- amCharts javascript sources -->
+	<script type="text/javascript" src="http://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script type="text/javascript" src="http://www.amcharts.com/lib/3/pie.js"></script>
+	<script type="text/javascript" src="http://www.amcharts.com/lib/3/themes/chalk.js"></script>
 
 
 </head>
 <body>
-
 <nav id="bar" class="blue darken-2">
 	<div class="container">
 		<div class="nav-wrapper">
 			<a href="index.html" class="brand-logo">Candidus-Informatio</a>
-			<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="index.html">Home</a></li>
-					<li><a class="page-scroll" href="#main-input">Search</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contactus.html">Contact Us</a></li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li><a href="index.html">Home</a></li>
-					<li><a class="page-scroll" href="#main-input">Search</a></li>
-					<li><a href="about.html">About</a></li>
-					<li><a href="contactus.html">Contact Us</a></li>
+				<ul class="right">
+					<li class="navItems"><a href="index.html">Home</a></li>
+					<li class="navItems"><a class="page-scroll" href="#main-input">Search</a></li>
+					<li class="navItems"><a href="about.html">About</a></li>
+					<li class="navItems"><a href="contactus.html">Contact Us</a></li>
 				</ul>
 		</div>
 	</div>
 </nav>
-
-
 <div class="parallax-container">
-	<div class="parallax"><img src="assets/images/capitol-building1.jpg"></div>
+	<div class="parallax"><img class="responsive-img" src="assets/images/capitol-building1.jpg"></div>
 </div>
-
 <div id="main-input" class="container">
 	<div class="row">
 		<form id="labnol" class="col s12" method="get">
@@ -83,14 +72,12 @@
 					<!-- Modal Trigger from materialize example -->
 					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
 				</div>
-
 				<div id="sidebar" class="col s6">
-    				<h2><img id="demo" src="assets/images/DemocraticLogo.png"> vs <img id="rep" src="assets/images/republicanlogo.jpg"></h2>
+    				<h2><img id="demo5" src="assets/images/DemocraticLogo.png"> vs <img id="rep5" src="assets/images/republicanlogo.jpg"></h2>
     				<div id="chartwrapper">
-        				<div id="chartdiv" style="width: 475px; height: 300px;" ></div>
+        				<div id="chartdiv"></div>
     				</div>
 				</div>
-
 			</div>
 		</form>
 	</div>
@@ -110,8 +97,6 @@
 		</div>
 	</div>
 </div>
-
-
 	<!-- Modal Structure -->
 	<div id="modal1" class="modal modalLG">
 		<div class="modal-content">
@@ -135,12 +120,9 @@
     		</div>
 		</div>
 	</div>
-
-
 <div class="parallax-container">
 	<div class="parallax"><img src="assets/images/capitol-building3.jpg"></div>
-</div><!-- div for parallax -->
-
+</div>
 
 <!--Import jQuery before materialize.js-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -153,8 +135,6 @@
 
 <!-- javascript firebase src -->
 <script type="text/javascript" src="assets/javascript/firebase.js"></script>
-
-
 
 <!-- added footer with red color -->
 <footer class="page-footer red darken-2">

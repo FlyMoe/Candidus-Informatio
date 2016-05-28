@@ -31,7 +31,8 @@ var demoCounter = 1;
 var repubCounter = 1;
 var otherCounter = 1;
 
-$(document).on('click','.modal-trigger',function(){
+$(document).on('click','.modal-trigger',function()
+{
 
 
 	if($(this).data("target") == "modal1")
@@ -113,7 +114,8 @@ $(document).on('click','.modal-trigger',function(){
 });
 
 //user filter
-$(".tab").on("click" , function(){
+$(".tab").on("click" , function()
+{
 	var filter = $(this).data("filter");
 	getCivicData(filter);	
 
@@ -121,7 +123,8 @@ $(".tab").on("click" , function(){
 
 
 //When user confirms address
-$("#commenceQuery").on("click" , function(){
+$("#commenceQuery").on("click" , function()
+{
 
 	getCivicData("all");
 	// We have data now, so remove the disabled class from the tabs
@@ -131,7 +134,6 @@ $("#commenceQuery").on("click" , function(){
 
 function getCivicData(filter)
 {	
-
 //API url call info
 var url = 'https://www.googleapis.com/civicinfo/v2/representatives?';
 var apiKey = 'key=AIzaSyBYo9BM0LkbN7SIHRGcQOGrG8bhCJFW3B4';
@@ -203,18 +205,10 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					$(listItemRep).attr("href", "#modal1");
 					//target data
 					$(listItemRep).attr("data-target", "modal1");
-
 					$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
 					//saves representatives name for wiki search
-					//if()
-					//{
 					$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
 					console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
-					//}
-					//else
-					//{
-					//	$(listItemRep).attr("data-repSearch", official[office[i].officialIndices[j]].name + " " + response.normalizedInput.state. + " politician");
-					//}
 					//image and img properties for each representative
 					var img = $("<img>");
 					$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
@@ -253,9 +247,7 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
 
 					$(list).append(listItemRep);
-					//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name);
 				}
-
 			}
 		});
 		//Empty the previously displayed representative info
@@ -325,8 +317,6 @@ AmCharts.makeChart("chartdiv",
 			]
 		}
 	);
-
-
 });
 
 // This function is for the voice recognition
@@ -356,9 +346,8 @@ function startDictation() {
  
     }
 }
-
+/*
 function getArticles(candidateName, counter) {
-	/*
 	console.log("candidateName: "+candidateName);
 	// Split name
 	var candidateNameArray = candidateName.split(" ");
@@ -373,9 +362,9 @@ function getArticles(candidateName, counter) {
 	// Alex's API Key
 	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
-	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
+	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
-	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
+ 	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
 	$.ajax({
 	        url: queryURL,
@@ -391,9 +380,5 @@ function getArticles(candidateName, counter) {
 		}
 		return false;
 	});
-	*/
-
-	//test stuff
-	var candidateDiv = $(".articles"+counter).append("<p><a href='#' target=\"_blank\">"+title+"</a></p>");
-	return false;
 }
+*/
