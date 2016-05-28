@@ -235,11 +235,54 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
 						$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">' + "<br>");
 					}
+					//social media 
+					var facebook = null;
+					var twitter = null;
+					var youtube = null;
+					if('channels.length' in official[office[value.officeIndices[i]].officialIndices[j]])
+					{
+						for(var z = 0; z < official[office[value.officeIndices[i]].officialIndices[j]].channels.length; z++)
+						{
+							if(official[office[value.officeIndices[i]].officialIndices[j]].channels[z].type == "Facebook")
+							{
+								facebook ==official[office[value.officeIndices[i]].officialIndices[j]].channels[z].id;
+							}
+							if(official[office[value.officeIndices[i]].officialIndices[j]].channels[z].type == "Twitter")
+							{
+								twitter ==official[office[value.officeIndices[i]].officialIndices[j]].channels[z].id;
+							}
+							if(official[office[value.officeIndices[i]].officialIndices[j]].channels[z].type == "YouTubes")
+							{
+								youtube ==official[office[value.officeIndices[i]].officialIndices[j]].channels[z].id;
+							}
+						}
+					}
 
 					// adding font awesome icons to candidate
-					$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
-					$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
-					$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+					if(facebook != null)
+					{
+						$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com/'+ facebook +'" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
+					}
+					else
+					{
+						$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
+					}
+					if(twitter != null)
+					{
+						$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com/'+ twitter +'" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
+					}
+					else
+					{
+						$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
+					}
+					if(facebook != null)
+					{
+						$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com/'+ youtube +'" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+					}
+					else
+					{
+						$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+					}
 
 					$(list).append(listItemRep);
 					// Call the getArticles
@@ -355,13 +398,14 @@ function getArticles(candidateName, counter) {
 
 	// Number of days to go back in time to get the articles
 	var days = 3;
-
+	//completely fresh API key
+	 //var apiKey = "19f613fb974376f0c88ac48da3603e4273457e39";
 	// Richard's API Key
-	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+	var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
 	// Alex's API Key
 	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
-	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
+	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
  	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
@@ -371,7 +415,7 @@ function getArticles(candidateName, counter) {
 	    })           
 	.done(function(response) {
 		 console.log(response);  
-		 var test = 'result' in response;
+		 var test = 'result.docs' in response;
 		 var docsLength;
 		 console.log(!test);
 		 if(!test)
