@@ -205,7 +205,14 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
 					//image and img properties for each representative
 					var img = $("<img>");
-					$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
+					if(!('photoUrl' in official[office[value.officeIndices[i]].officialIndices[j]]))
+					{
+						$(img).attr("src", "http://placehold.it/160x200");
+					}
+					else
+					{
+						$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
+					}
 					$(img).attr("class", "imgCanidates");
 					$(img).css("max-height", "200px");
 					$(listItemRep).append(img);
@@ -354,7 +361,7 @@ function getArticles(candidateName, counter) {
 	// Alex's API Key
 	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
-	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
+	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
  	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
@@ -363,13 +370,42 @@ function getArticles(candidateName, counter) {
 	        method: 'GET'
 	    })           
 	.done(function(response) {
-		 console.log(response);  	    
-		for (var i = 0; i < response.result.docs.length; i++) {
+		 console.log(response);  
+		 var test = 'result' in response;
+		 var docsLength;
+		 console.log(!test);
+		 if(!test)
+		 {
+		 	docsLength = 0;
+		 }
+		 else
+		 {
+		 	docsLength = response.result.docs.length;  
+		 }
+		 var docDifference = 0;
+		 var placeHolderText = "Article not available . . . ";
+		 if(docsLength < 5)
+		 {
+		 	docDifference = 5 - docsLength;
+		 }
+		 console.log(docsLength);
+		 console.log(docDifference);
+		for (var i = 0; i < docsLength; i++)
+		{
 			var url = response.result.docs[i].source.enriched.url.url;
 	        var title = response.result.docs[i].source.enriched.url.title;
+	        if (title.length > 60)
+	        {
+	        	title = title.substring(0, 59);
+	        	title += " . . . ";
+	        }
             var hostname = $('<a>').prop('href', url).prop('hostname');
-	        $(".articles"+counter).append("<p><a href='"+url+"' class='articleA' target=\"_blank\">"+title+"</a></p>");              
+	        $(".articles"+counter).append("<p><a href='"+url+"' class='articleA' target=\"_blank\">"+title+"</a></p>");            
 		}
+		for(var i = 0; i <= docDifference; i++)
+        {
+        	$(".articles"+counter).append("<p><a href='#' class='articleA' target=\"_blank\">"+placeHolderText+"</a></p>"); 
+        }  
 		$(".articles"+counter).append('<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" href="#modal1" data-repsearch="'+ candidateName +'" data-target="modal1">More Info</a>');
 		return false;
 	});
