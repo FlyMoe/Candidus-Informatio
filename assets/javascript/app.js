@@ -417,7 +417,7 @@ function getArticles(candidateName, counter) {
 	    })           
 	.done(function(response) {
 		 console.log(response);  
-		 var test = 'result.docs' in response;
+		 var test = 'result' in response;
 		 var docsLength;
 		 console.log(!test);
 		 if(!test)
