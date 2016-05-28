@@ -424,6 +424,10 @@ function getArticles(candidateName, counter) {
 		 {
 		 	docsLength = 0;
 		 }
+		 else if(!('docs' in response.result))
+		 {
+		 	docsLength = 0;
+		 }
 		 else
 		 {
 		 	docsLength = response.result.docs.length;  
