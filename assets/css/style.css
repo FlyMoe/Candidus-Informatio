@@ -67,15 +67,17 @@ body {
 	/*font-family: 'Abril Fatface', cursive;*/
 	/*font-family: 'Oleo Script', cursive;*/
 	font-family: 'Montserrat', sans-serif;
+	
 }
 
-.brand-logo {
+a.brand-logo {
 	/*font-family: 'Acme', sans-serif;*/
 	/*font-family: 'Abril Fatface', cursive;*/
 	/*font-family: 'Oleo Script', cursive;*/
 	font-family: 'Montserrat', sans-serif;
 	/*font-family: 'Timmana', sans-serif;*/
 	font-size: 35px;
+	padding-top: 5px;
 }
 
 .listHeader{
@@ -84,7 +86,7 @@ body {
 }
 
 #bar {
-	height: 45px;
+	height: 50px;
 }
 
 #submitAddress {
@@ -163,6 +165,21 @@ body {
 @media screen and (max-width: 320px) { /* for screen size less or equal to 320px*/
      h3{
         font-size: 60%; /*Changes as per your requirement*/
+     }    
+}
+
+@media screen and (max-width: 320px) {  for screen size less or equal to 320px
+     .navItems{
+        padding-top: 40px;
+        font-size: 40%;
+
+     }    
+}
+
+@media screen and (max-width: 320px) {  for screen size less or equal to 320px
+     .brand-logo{
+        font-size: 50%;
+        
      }    
 }
 
