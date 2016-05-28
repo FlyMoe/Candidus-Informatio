@@ -309,7 +309,7 @@ repubCounter = data.party_republican;
 console.log(demoCounter);
 otherCounter = data.party_Other;
 console.log(demoCounter);
-/*
+
 AmCharts.makeChart("chartdiv",
 		{
 			"type": "pie",
@@ -360,7 +360,7 @@ AmCharts.makeChart("chartdiv",
 			]
 		}
 	);
-	*/
+	
 });
 
 // This function is for the voice recognition
