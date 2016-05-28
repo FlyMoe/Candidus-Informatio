@@ -65,7 +65,7 @@ $(document).on('click','.modal-trigger',function()
 
 		//Wiki search
 		var searchPage = $(this).data("repsearch");
-		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
+		$.getJSON('https://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
 			console.log(json);
     	var printDiv = $('<div>').html(json.parse.text['*']); 
     	$(printDiv).find('img').attr("src", function(){
@@ -403,11 +403,11 @@ function getArticles(candidateName, counter) {
 	//completely fresh API key
 	//var apiKey = "19f613fb974376f0c88ac48da3603e4273457e39";
 	// Richard's API Key
-	var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
+	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
 	// Alex's API Key
 	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
-	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
+	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
  	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
