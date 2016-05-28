@@ -401,11 +401,11 @@ function getArticles(candidateName, counter) {
 	// Number of days to go back in time to get the articles
 	var days = 3;
 	//completely fresh API key
-	 var apiKey = "19f613fb974376f0c88ac48da3603e4273457e39";
+	 //var apiKey = "19f613fb974376f0c88ac48da3603e4273457e39";
 	// Richard's API Key
 	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
 	// Alex's API Key
-	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
+	var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
 	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
