@@ -25,7 +25,7 @@ $("div.articles").empty();
 
 
 var counter = 0;
-var url ='https://intense-inferno-5888.firebaseio.com/'
+var url ='https://intense-inferno-5888.firebaseio.com/';
 var dataRef = new Firebase(url);
 var demoCounter = 1;
 var repubCounter = 1;
@@ -65,7 +65,7 @@ $(document).on('click','.modal-trigger',function()
 
 		//Wiki search
 		var searchPage = $(this).data("repsearch");
-		$.getJSON('http://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
+		$.getJSON('https://en.wikipedia.org/w/api.php?action=parse&page='+ searchPage+ '&prop=text&format=json&callback=?', function(json) { 
 			console.log(json);
     	var printDiv = $('<div>').html(json.parse.text['*']); 
     	$(printDiv).find('img').attr("src", function(){
@@ -200,31 +200,26 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 					console.log(office[value.officeIndices[i]].officialIndices[j]);
 					var listItemRep = $("<li>");
 					//sets list item elements to collection items
-					$(listItemRep).attr("class", "collection-item avatar modal-trigger card-panel hoverable");
-					//enables each item to load larger modal with detailed info
-					$(listItemRep).attr("href", "#modal1");
-					//target data
-					$(listItemRep).attr("data-target", "modal1");
+					$(listItemRep).attr("class", "collection-item avatar card-panel hoverable");
+					//target part
 					$(listItemRep).attr("data-party", official[office[value.officeIndices[i]].officialIndices[j]].party);
-					//saves representatives name for wiki search
-					$(listItemRep).attr("data-repsearch", official[office[value.officeIndices[i]].officialIndices[j]].name );
-					console.log(official[office[value.officeIndices[i]].officialIndices[j]].name);
 					//image and img properties for each representative
 					var img = $("<img>");
-					$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
+					if(!('photoUrl' in official[office[value.officeIndices[i]].officialIndices[j]]))
+					{
+						$(img).attr("src", "http://placehold.it/160x200");
+					}
+					else
+					{
+						$(img).attr("src", official[office[value.officeIndices[i]].officialIndices[j]].photoUrl);
+					}
 					$(img).attr("class", "imgCanidates");
 					$(img).css("max-height", "200px");
 					$(listItemRep).append(img);
 
 					// Div for articles
-					var div = $("<div>").attr("class", "articles"+counter);
-					$(div).attr("class", "art");
-					$(div).html("article "+counter);
+					var div = $("<div>").attr("class", "articles"+counter + " art");
 					$(listItemRep).append(div);
-					// Call the getArticles
-					//getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
-					// Update the counter
-					counter++;
 
 					//span and span properties for each representative's name
 					var span = $("<span>").attr("class", "title repHeader");
@@ -240,13 +235,60 @@ $.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
 						$(listItemRep).append('<img id="rep" src="assets/images/republicanlogo.jpg">' + "<br>");
 					}
+					//social media 
+					var facebook = null;
+					var twitter = null;
+					var youtube = null;
+					if('channels.length' in official[office[value.officeIndices[i]].officialIndices[j]])
+					{
+						for(var z = 0; z < official[office[value.officeIndices[i]].officialIndices[j]].channels.length; z++)
+						{
+							if(official[office[value.officeIndices[i]].officialIndices[j]].channels[z].type == "Facebook")
+							{
+								facebook ==official[office[value.officeIndices[i]].officialIndices[j]].channels[z].id;
+							}
+							if(official[office[value.officeIndices[i]].officialIndices[j]].channels[z].type == "Twitter")
+							{
+								twitter ==official[office[value.officeIndices[i]].officialIndices[j]].channels[z].id;
+							}
+							if(official[office[value.officeIndices[i]].officialIndices[j]].channels[z].type == "YouTubes")
+							{
+								youtube ==official[office[value.officeIndices[i]].officialIndices[j]].channels[z].id;
+							}
+						}
+					}
 
 					// adding font awesome icons to candidate
-					$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
-					$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
-					$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+					if(facebook != null)
+					{
+						$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com/'+ facebook +'" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
+					}
+					else
+					{
+						$(listItemRep).append('<a id="faceIcon" href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook-square fa-2x" aria-hidden="true"></i></a>');
+					}
+					if(twitter != null)
+					{
+						$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com/'+ twitter +'" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
+					}
+					else
+					{
+						$(listItemRep).append('<a id="twitterIcon" href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter-square fa-2x" aria-hidden="true"></i>');
+					}
+					if(facebook != null)
+					{
+						$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com/'+ youtube +'" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+					}
+					else
+					{
+						$(listItemRep).append('<a id="youTubeIcon" href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube-play fa-2x" aria-hidden="true"></i>');
+					}
 
 					$(list).append(listItemRep);
+					// Call the getArticles
+					getArticles(official[office[value.officeIndices[i]].officialIndices[j]].name, counter);
+					// Update the counter
+					counter++;
 				}
 			}
 		});
@@ -267,6 +309,7 @@ repubCounter = data.party_republican;
 console.log(demoCounter);
 otherCounter = data.party_Other;
 console.log(demoCounter);
+
 AmCharts.makeChart("chartdiv",
 		{
 			"type": "pie",
@@ -297,7 +340,7 @@ AmCharts.makeChart("chartdiv",
 			],
 			"titleField": "category",
 			"valueField": "column-1",
-			"theme": "dark",
+			"theme": "none",
 			"allLabels": [],
 			"balloon": {},
 			"titles": [],
@@ -317,6 +360,7 @@ AmCharts.makeChart("chartdiv",
 			]
 		}
 	);
+	
 });
 
 // This function is for the voice recognition
@@ -346,7 +390,7 @@ function startDictation() {
  
     }
 }
-/*
+
 function getArticles(candidateName, counter) {
 	console.log("candidateName: "+candidateName);
 	// Split name
@@ -356,13 +400,14 @@ function getArticles(candidateName, counter) {
 
 	// Number of days to go back in time to get the articles
 	var days = 3;
-
+	//completely fresh API key
+	//var apiKey = "19f613fb974376f0c88ac48da3603e4273457e39";
 	// Richard's API Key
 	//var apiKey = "7fb6488ed8a21e2f195e86044da7b925de2c18c3";
 	// Alex's API Key
 	//var apiKey = "f0faba359d051da2cbcc649312e730f4722257f7";
 	// Jonathan's API Key
-	//var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
+	var apiKey = "853f8322566373ed7568a226d8366b34bc8aeb6b";
 	
  	var queryURL = "https://gateway-a.watsonplatform.net/calls/data/GetNews?apikey="+apiKey+"&outputMode=json&start=now-"+days+"d&end=now&count=5&q.enriched.url.enrichedTitle.keywords.keyword.text="+firstName+"+"+lastName+"&return=enriched.url.url,enriched.url.title";
 	
@@ -371,14 +416,47 @@ function getArticles(candidateName, counter) {
 	        method: 'GET'
 	    })           
 	.done(function(response) {
-		 console.log(response);  	    
-		for (var i = 0; i < response.result.docs.length; i++) {
+		 console.log(response);  
+		 var test = 'result' in response;
+		 var docsLength;
+		 console.log(!test);
+		 if(!test)
+		 {
+		 	docsLength = 0;
+		 }
+		 else if(!('docs' in response.result))
+		 {
+		 	docsLength = 0;
+		 }
+		 else
+		 {
+		 	docsLength = response.result.docs.length;  
+		 }
+		 var docDifference = 0;
+		 var placeHolderText = "Article not available . . . ";
+		 if(docsLength < 5)
+		 {
+		 	docDifference = 5 - docsLength;
+		 }
+		 console.log(docsLength);
+		 console.log(docDifference);
+		for (var i = 0; i < docsLength; i++)
+		{
 			var url = response.result.docs[i].source.enriched.url.url;
 	        var title = response.result.docs[i].source.enriched.url.title;
+	        if (title.length > 60)
+	        {
+	        	title = title.substring(0, 59);
+	        	title += " . . . ";
+	        }
             var hostname = $('<a>').prop('href', url).prop('hostname');
-	        var candidateDiv = $(".articles"+counter).append("<p><a href='"+url+"' target=\"_blank\">"+title+"</a></p>");              
+	        $(".articles"+counter).append("<p><a href='"+url+"' class='articleA' target=\"_blank\">"+title+"</a></p>");            
 		}
+		for(var i = 0; i <= docDifference; i++)
+        {
+        	$(".articles"+counter).append("<p><a href='#' class='articleA' target=\"_blank\">"+placeHolderText+"</a></p>"); 
+        }  
+		$(".articles"+counter).append('<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" href="#modal1" data-repsearch="'+ candidateName +'" data-target="modal1">More Info</a>');
 		return false;
 	});
 }
-*/
