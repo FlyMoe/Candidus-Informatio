@@ -83,11 +83,6 @@ body {
 	font-family: 'Montserrat', sans-serif;
 }
 
-#submitDiv {
-	margin-top: 25px;
-	margin-left: 242px;
-}
-
 .jonImage {
 	width: 100px;
 	height: 100px;
@@ -129,16 +124,6 @@ body {
     float: right;
     margin-left: 30px;
 }
-#sidebar h2 {
-    font-size: 18px;
-    text-align: center;
-    border-bottom: 2px solid #fff;
-    padding: 10px;
-}
-#sidebar p {
-    padding: 20px;
-    margin: 0;
-}
 
 /*#search-graph {
 	background-image:url(../images/cherry-blossoms4.jpg);
@@ -151,24 +136,8 @@ body {
 .speech img {float: right; width: 40px }
 
 #chartdiv {
-	width: 884px;
-	height: 300px;
-}
-
-
-@media screen and (max-width: 725px) {
-	#chardiv { width: 684px;
-	}
-}
-
-@media screen and (max-width: 500px) {
-	#chardiv { width: 484px;
-	}
-}
-
-@media screen and (max-width: 375px) {
-	#chardiv { width: 484px;
-	}
+	width: 100%;
+	height: 400px;
 }
 
 
