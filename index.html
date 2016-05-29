@@ -44,7 +44,7 @@
 </head>
 <body>
 
-<nav id="bar" class="blue darken-2">
+<nav id="bar" class="red darken-2">
 	<div class="nav-wrapper">
 		<a href="index.html" class="brand-logo center">Candidus-Informatio</a>
 			<ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -56,25 +56,24 @@
 	</div>
 </nav>
 
-<div class="container">
-	<div class="row">
-		<div id="sidebar" class="col s12 m12 l12">
 
-			<form id="labnol" method="get">
-				<div class="speech input-field transparent" id="submitDiv">
-					<input name="q" placeholder="address..." id="addressInput" type="text" class="validate" x-webkit-speech>
-					<label for="address-input"></label>
-					<i onclick="startDictation()" class="fa fa-microphone" aria-hidden="true"></i>
-					<br>
-					<!-- Modal Trigger from materialize example -->
-					<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
+<div id="search-graph">
+	<div class="container">
+		<div class="row">
+			<div id="sidebar" class="col s12 m12 l12">
+				<form id="labnol" method="get">
+					<div class="speech input-field transparent" id="submitDiv">
+						<input name="q" placeholder="address..." id="addressInput" type="text" class="validate" x-webkit-speech>
+						<label for="address-input"></label>
+						<i onclick="startDictation()" class="fa fa-microphone" aria-hidden="true"></i><br>
+						<!-- Modal Trigger from materialize example -->
+						<a class="waves-effect waves-light btn blue darken-2 modal-trigger" id="submitAddress" data-target="modal2">Search</a>
+					</div>
+				</form>
+				<div id="chartwrapper">
+					<div id="chartdiv"></div>
 				</div>
-			</form>
-
-			<div id="chartwrapper">
-				<div id="chartdiv"></div>
 			</div>
-
 		</div>
 	</div>
 </div>
@@ -137,7 +136,7 @@
 <script type="text/javascript" src="assets/javascript/firebase.js"></script>
 
 <!-- added footer with red color -->
-<footer class="page-footer red darken-2">
+<footer class="page-footer blue darken-2">
 	<div class="container">
 		<div class="footer-copyright">
 			Copyright &copy; 2016 Candidus-Informatio.com | All rights reserved.
