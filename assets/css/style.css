@@ -156,7 +156,21 @@ body {
 }
 
 
+@media screen and (max-width: 725px) {
+	#chardiv { width: 684px;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	#chardiv { width: 484px;
+	}
+}
+
 @media screen and (max-width: 375px) {
-	#chardiv { 
+	#chardiv { width: 484px;
+	}
+}
+
+
 
 
