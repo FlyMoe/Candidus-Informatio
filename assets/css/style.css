@@ -70,7 +70,7 @@ body {
 	
 }
 
-a.brand-logo {
+.brand-logo {
 	/*font-family: 'Acme', sans-serif;*/
 	/*font-family: 'Abril Fatface', cursive;*/
 	/*font-family: 'Oleo Script', cursive;*/
@@ -85,10 +85,6 @@ a.brand-logo {
 	font-size: 35px;
 }
 
-#bar {
-	height: 50px;
-}
-
 #submitAddress {
 	font-family: 'Montserrat', sans-serif;
 }
@@ -96,7 +92,8 @@ a.brand-logo {
 
 #submitDiv
 {
-	margin-top: 150px;
+	margin-top: 25px;
+	margin-left: 242px;
 }
 
 .jonImage {
@@ -157,29 +154,12 @@ a.brand-logo {
 .speech img {float: right; width: 40px }
 
 #chartdiv {
-	width: 475px;
+	width: 884px;
 	height: 300px;
 }
 
 
-@media screen and (max-width: 320px) { /* for screen size less or equal to 320px*/
-     h3{
-        font-size: 60%; /*Changes as per your requirement*/
-     }    
-}
+@media screen and (max-width: 375px) {
+	#chardiv { 
 
-@media screen and (max-width: 320px) {  for screen size less or equal to 320px
-     .navItems{
-        padding-top: 40px;
-        font-size: 40%;
-
-     }    
-}
-
-@media screen and (max-width: 320px) {  for screen size less or equal to 320px
-     .brand-logo{
-        font-size: 50%;
-        
-     }    
-}
 
